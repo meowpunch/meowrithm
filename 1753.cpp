@@ -10,7 +10,7 @@ vector< pair<int, int>> map[20001];  //도착정점과 간선 길이
 vector<int> Dijkstra(int S, int V, int E) {
 
     vector<int> dist(V+1, INT_MAX);
-    vector<int> visit(V+1, 0);
+    //vector<int> visit(V+1, 0);
     dist[S] = 0;
 
     priority_queue<pair<int, int>> pq; //간선 길이, 도착 정점
@@ -18,27 +18,21 @@ vector<int> Dijkstra(int S, int V, int E) {
     pq.push(make_pair(0, S));
 
     while(!(pq.empty())) {
-        int weight = pq.top().first; //가장 짧은 길이 선택
-        int top = pq.top().second;
+        int hereDis = -pq.top().first;  //갈수있는 정점중 시작점으로부터 가장 짧은 길이를 택함.
+        int here = pq.top().second;     //현재 정점
 
-        if(visit[top] == 0){  //방문안했다면 방문.
-            //printf("visit %d\n", top);
-            pq.pop();
-            visit[top] = 1;
-            //printf("hi");
-            for(int i=0; i<map[top].size(); i++) {
-                int to = map[top][i].first;
-                //printf("connected: %d \n", to);
-                int edge = map[top][i].second;
+        pq.pop();
+        if(hereDis > dist[here]) continue;
 
-                if(dist[to] > dist[top] + edge) dist[to] = dist[top] + edge;
+        for(int i=0; i<map[here].size(); i++) { //현재 정점에 edge 모두 확인
+            int next = map[here][i].first;
+            int nextDis = dist[here] + map[here][i].second;
 
-                pq.push(make_pair(-edge, to));
-                //printf("push %d \n", to);
+            if(dist[next] > nextDis) {
+                dist[next] = nextDis; //최단거리 갱신
+                pq.push(make_pair(-nextDis, next));
+                }
             }
-        } else {
-            pq.pop();
-        }
     }
     return dist;
 }
