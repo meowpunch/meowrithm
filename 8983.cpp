@@ -44,8 +44,8 @@ int main() {
     if(abs(x-M_loc[closet]) + y <= L) { point++; continue; }
     if(closet+1<M && abs(x-M_loc[closet+1]) + y <= L) { point++; continue; }
     if(closet-1>-1 && abs(x-M_loc[closet-1]) + y <= L) { point++; continue; }
-    if(closet+2<M && abs(x-M_loc[closet+2]) + y <= L) { point++; continue; }
-    if(closet-2>-1 && abs(x-M_loc[closet-2]) + y <= L) { point++; continue; }
+  //if(closet+2<M && abs(x-M_loc[closet+2]) + y <= L) { point++; continue; }
+  //if(closet-2>-1 && abs(x-M_loc[closet-2]) + y <= L) { point++; continue; }
   //  printf("pass");
 
     // for(int j=0; j<M; j++) {
