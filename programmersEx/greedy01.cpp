@@ -7,7 +7,7 @@ int solution(int n, vector<int> lost, vector<int> reserve) {
     vector<int> answer;
 
     int C[31];
-    for(int i = 1;  i<n+1; i++) C[i] = 1;
+    for(int i = 1;  i<n+1; i++) C[i] = 1; //1부터 n까지
 
     while(!reserve.empty()) {
         C[reserve.back()]++;
