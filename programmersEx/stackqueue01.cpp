@@ -1,3 +1,5 @@
+// 쇠막대기
+
 #include <string>
 #include <vector>
 #include <iostream>
@@ -20,7 +22,7 @@ int solution(string arrangement) {
             flag = 0;
             //num++;
         } else {
-            s.pop_back(); // ')'가 나오면 '(' 하나 팝해준다. 
+            s.pop_back(); // ')'가 나오면 '(' 하나 팝해준다.
 
             if(flag == 0) { // 전에 '(' 였으면 레이저 생긴 것이고 잘라진 개수를 count 해준다.
                 //num--;
