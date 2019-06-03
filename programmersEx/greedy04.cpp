@@ -96,6 +96,9 @@ int solution(vector<int> people, int limit) {
     /*
         가장 큰 것을 가장 작은 것부터 짝을 찾으면서 가능하면 바로 boat에 태움
         짝이 없다 혼자 태움.
+
+        짝으로 배에 태운다면 "최대"는 "최소"와 짝을 이룸
+        2명이 최대기 때문에 가능한 알고리즘.
     */
     while(left<=right){
         if(people[left]+people[right]<=limit){ // 짝 맞으면 같이 태움.
