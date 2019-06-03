@@ -49,26 +49,61 @@ int solution(vector<int> people, int limit) {
     return answer;
 }
 
+
+int solution(vector<int> people, int limit) {
+    priority_queue<int> pq;
+
+    while(!people.empty()) {
+        pq.push(people.back());
+        people.pop_back();
+    }
+    vector<pair<int,int>> boat; //first 현재수용가능무게, second 현재수용가능인원
+    int flag = 0;
+    while(!pq.empty()) { // O(N^2) 시간 복잡도
+        if(flag == 1) flag = 0;
+        else { boat.push_back(make_pair(limit,2)); }
+        for(int i=0; i<boat.size(); i++) {
+            if(boat[i].second > 0 && pq.top()<=boat[i].first) {
+                boat[i].first -= pq.top();
+                boat[i].second--;
+                flag = 1;
+                //cout<<pq.top()<< " ";
+                pq.pop();
+                break;
+            }
+        //cout<<boat[i].first << boat[i].second<<" ";
+        }
+        printf("\n");
+    }
+
+    return boat.size();
+}
+
 */
 
-#include <iostream>
-#include <queue>
+// 구명보트
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 int solution(vector<int> people, int limit) {
-    vector<pair<int,int>> boat; //first 현재수용가능무게, second 현재수용가능인원
-    while(!people.empty()) {
-        boat.push_back(make_pair(limit,2));
-        for(int i=0; i<boat.size(); i++) {
-            if(people.back()<=boat[i].first && boat[i].second > 0) {
-                boat[i].first -= people.back();
-                boat[i].second--;
-                people.pop_back();
-            }
+    sort(people.begin(), people.end(), greater<int>());
+    int left = 0;
+    int right = people.size() - 1;
+    int total = 0;
+    /*
+        가장 큰 것을 가장 작은 것부터 짝을 찾으면서 가능하면 바로 boat에 태움
+        짝이 없다 혼자 태움.
+    */
+    while(left<=right){
+        if(people[left]+people[right]<=limit){ // 짝 맞으면 같이 태움.
+            right--; left++;
+        } else { // 짝 안맞으면 큰애 혼자 태움.
+            left++;
         }
+        total++;
     }
-    return boat.size();
+    return total;
 }
