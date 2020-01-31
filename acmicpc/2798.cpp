@@ -24,8 +24,8 @@ int main() {
     }
 
     for(int i=0;i<N;i++) {
-        for(int j=i;j<N;j++) {
-            for(int k=j;k<N;k++) {
+        for(int j=i+1;j<N;j++) {    // i+1, j+1 for avoiding i,j,k have same value.
+            for(int k=j+1;k<N;k++) {
                 int sum = v[i]+v[j]+v[k];
                 int sub = M-sum;
                 if (sub >= 0 && sub < minV) {
