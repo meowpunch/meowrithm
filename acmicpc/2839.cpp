@@ -1,3 +1,8 @@
+/* 
+    설탕 배달
+    알고리즘 분류: 구현, 수학 
+*/
+
 #include <iostream>
 
 int main() {
@@ -26,8 +31,6 @@ int main() {
     }
     
     printf("%d", sol);
-    
-    
     
     return 0;
 }
