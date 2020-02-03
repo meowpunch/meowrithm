@@ -8,7 +8,7 @@ using namespace std;
 
 int M,N;
 
-int move[4][2] = {
+int mov[4][2] = {
     {-1,0},
     {1,0},
     {0,1},
@@ -16,13 +16,14 @@ int move[4][2] = {
 };
 
 int isValidPos(int y, int x) {
-    if( y < N && y >= 0 && x < M && x >= 0 )
+    if( (y < N && y >= 0) && (x < M && x >= 0) ) return 1;
+    else return 0;
 }
 
 int main()
 {
 
-    int M, N;
+    // int M, N;
     scanf("%d %d", &M, &N);
 
     vector<vector<int>> tom;
@@ -42,6 +43,7 @@ int main()
             {
                 q.push(make_pair(i, j));
                 count[i][j] = 0;
+                visited[i][j] = 1;
             }
         }
     }
@@ -60,45 +62,22 @@ int main()
     {
         pair<int, int> curPos = q.front();
         q.pop();
-        visited[curPos.first][curPos.second] = 1;
+        // visited[curPos.first][curPos.second] = 1;
         tom[curPos.first][curPos.second] = 1;
 
-        if (curPos.first - 1 >= 0 && visited[curPos.first - 1][curPos.second] != 1 && tom[curPos.first - 1][curPos.second] != -1)
-        {
-            // printf("left");
-            if (count[curPos.first - 1][curPos.second] > count[curPos.first][curPos.second] + 1)
+        for(int i=0; i<4; i++) {
+            pair<int,int> nexPos = make_pair(curPos.first+mov[i][0], curPos.second+mov[i][1]);
+            
+            // cout << nexPos.first << nexPos.second << isValidPos(nexPos.first,nexPos.second) << endl;
+
+            if(isValidPos(nexPos.first, nexPos.second)==1 && visited[nexPos.first][nexPos.second] != 1 && tom[nexPos.first][nexPos.second] != -1)
             {
-                count[curPos.first - 1][curPos.second] = count[curPos.first][curPos.second] + 1;
-                q.push(make_pair(curPos.first - 1, curPos.second));
+                count[nexPos.first][nexPos.second] = count[curPos.first][curPos.second] + 1;
+                q.push(nexPos);
+                visited[nexPos.first][nexPos.second] = 1;
             }
         }
-        if (curPos.first + 1 < N && visited[curPos.first + 1][curPos.second] != 1 && tom[curPos.first + 1][curPos.second] != -1)
-        {
-            // printf("right");
-            if (count[curPos.first + 1][curPos.second] > count[curPos.first][curPos.second] + 1)
-            {
-                count[curPos.first + 1][curPos.second] = count[curPos.first][curPos.second] + 1;
-                q.push(make_pair(curPos.first + 1, curPos.second));
-            }
-        }
-        if (curPos.second - 1 >= 0 && visited[curPos.first][curPos.second - 1] != 1 && tom[curPos.first][curPos.second - 1] != -1)
-        {
-            // printf("down");
-            if (count[curPos.first][curPos.second - 1] > count[curPos.first][curPos.second] + 1)
-            {
-                count[curPos.first][curPos.second - 1] = count[curPos.first][curPos.second] + 1;
-                q.push(make_pair(curPos.first, curPos.second - 1));
-            }
-        }
-        if (curPos.second + 1 < M && visited[curPos.first][curPos.second + 1] != 1 && tom[curPos.first][curPos.second + 1] != -1)
-        {
-            // printf("up");
-            if (count[curPos.first][curPos.second + 1] > count[curPos.first][curPos.second] + 1)
-            {
-                count[curPos.first][curPos.second + 1] = count[curPos.first][curPos.second] + 1;
-                q.push(make_pair(curPos.first, curPos.second + 1));
-            }
-        }
+
     }
 
     // cout<<endl;
