@@ -4,49 +4,57 @@
 
 #include <iostream>
 #include <vector>
-#include <list>
 
 using namespace std;
 
-int main() {
+int N;
+vector<int> seq;
+vector<int> mem;
+// OPT(i) is the lenght of the longest increasing subsquence ending at i
 
-    list<int> l;
-    
-    l.push_back(4);
-    l.push_back(3);
-    l.push_back(2);
-    l.push_back(1);
+// find the lenght of the longest increasing subsquence
+int findLIS()
+{
+    int length = 0;
 
-    list<int>::iterator head = l.begin();
-    l.insert(++head,10);
+    mem[0] = 1;
 
-    cout<<*head<<endl;
+    for (int i = 1; i < N; i++)
+    {   
+        int max = -1;
+        for (int j = i - 1; j < i; j++)
+        {   
+            if (seq[j] < mem[i] && mem[j] > max)
+            {
+                max = mem[j];
+            }
+        }
 
-    for(list<int>::iterator head = l.begin(); head != l.end(); head++){
-        *head = 1;
-        printf("%d ", *head);
+        if(max == -1) {
+            mem[i] = 1;
+        } else mem[i] = max + 1;
     }
 
-    for(int e: l){
-        printf("%d ", e);
+    for(int i=0;i<N;i++) {
+        if(length<mem[i])length = mem[i];
     }
 
+    return length;
+}
 
-    /* 
-    // error
-    for(list<int>::iterator i: l){
-        printf("%d ", *i);
-    } 
-    */
+int main()
+{
+    scanf("%d", &N);
 
+    for (int i = 0; i < N; i++)
+    {
+        int x;
+        scanf("%d", &x);
+        seq.push_back(x);
+    }
 
-    vector<int> v;
-    v.push_back(4);
-    v.push_back(3);
-    v.push_back(2);
-    v.push_back(1);
+    mem.assign(N, -1);
 
-    // vector<int>::iterator head = v.begin();
-    
+    printf("%d\n", findLIS());
     return 0;
 }
