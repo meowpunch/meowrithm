@@ -1,5 +1,9 @@
 /* 
     줄세우기 
+
+    DP after LIS!
+
+    LIS: 1965
 */
 
 #include <iostream>
@@ -14,7 +18,7 @@ vector<int> mem;
 
 // find the lenght of the longest increasing subsquence
 int findLIS()
-{
+{   
     int length = 0;
 
     mem[0] = 1;
@@ -22,9 +26,9 @@ int findLIS()
     for (int i = 1; i < N; i++)
     {   
         int max = -1;
-        for (int j = i - 1; j < i; j++)
+        for (int j = 0; j < i; j++)
         {   
-            if (seq[j] < mem[i] && mem[j] > max)
+            if (seq[j] < seq[i] && mem[j] > max)
             {
                 max = mem[j];
             }
@@ -55,6 +59,6 @@ int main()
 
     mem.assign(N, -1);
 
-    printf("%d\n", findLIS());
+    printf("%d\n", N - findLIS());
     return 0;
 }
