@@ -14,7 +14,7 @@ class Conference{
     };
 
     bool operator< (const Conference& a) const {
-        return end > a.end;
+        return (end > a.end || (end == a.end && str > a.str)) ;
     };
     
 };
@@ -41,6 +41,7 @@ int main() {
         pq.pop();
 
         if(curCon.str >= endTime) {
+            // cout<< curCon.str << curCon.end << endl;
             endTime = curCon.end;
             count++;
         }
@@ -50,3 +51,23 @@ int main() {
     
     return 0;
 }
+
+
+/*
+ TEST CASE
+
+ 9
+8 8
+5 8
+3 4
+2 5
+2 7
+8 8
+1 10
+3 3
+10 10
+
+answer: 6
+
+If u implement Greedy Algorithm just sorting endTime, ur output maybe 5.
+*/
