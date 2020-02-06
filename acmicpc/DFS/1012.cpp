@@ -1,5 +1,7 @@
 /*
     유기농 배추
+
+    implement DFS using recursive function
 */
 
 #include <iostream>
