@@ -3,9 +3,11 @@
 
     DFS
     
-    Solve 'Time over' problem by changing vector from local to global.
+    - Counting depth in DFS.
+
+    - Solve 'Time over' problem by changing vector from local to global.
     
-    Passing the vector as parameter: call by value
+    - Passing the vector as parameter: call by value
 */
 
 #include <iostream>
