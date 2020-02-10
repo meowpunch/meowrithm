@@ -8,6 +8,9 @@
     - Solve 'Time over' problem by changing vector from local to global.
     
     - Passing the vector as parameter: call by value
+
+    To satisfy the condtition that always pass different alphabet from others passed before,
+    I must remember the alphabets passed before. So, DFS is more efficient solution than BFS. 
 */
 
 #include <iostream>
