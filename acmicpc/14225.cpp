@@ -1,5 +1,6 @@
 /*
     부분수열의 합
+    same as Greedy 2437.cpp 
 */
 
 #include <iostream>
@@ -18,7 +19,20 @@ int main() {
 
     sort(seq.begin(), seq.end());
 
-    for(int e: seq) printf("%d ", e);
+    // for(int e: seq) printf("%d ", e);
 
+    /*
+        when we can make the 1~k sum of subsequence 
+        e<=k+1 -> 1~k+e
+        e>k+1 -> 1~k
+    */
+
+    int k=0;
+    for(int e: seq) {
+        if(e<=k+1) k=k+e;
+        else k=k;
+    }
+
+    cout<< k+1;
     return 0;
 }
