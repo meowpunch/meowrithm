@@ -2,7 +2,6 @@ from collections import deque
 
 
 # 차량은 routes의 인덱스
-
 def solution(routes):
     # 끝 지점로 오름차순 정렬
     sorted_cars = deque(sorted(routes, key=lambda x: x[1]))
