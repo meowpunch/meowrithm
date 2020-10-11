@@ -11,28 +11,29 @@ def convert(c):
 
 
 def solution(n, customers):
+    # (datetime, minutes)
     converted = list(map(convert, customers))
-    print(converted)
 
     kiosks = [datetime(1, 1, 1, 0, 0) for _ in range(n)]
     counts = [0 for _ in range(n)]
 
     while len(converted) > 0:
+        print(kiosks)
         customer = converted[0]
         converted = converted[1:]
-        is_pass = False
 
-        for idx, k in enumerate(kiosks):
-            if k < customer[0]:
-                is_pass = True
-                kiosks[idx] = customer[0] + timedelta(minutes=customer[1])
-                counts[idx] += 1
+        # kiosks 를 primary queue 에 넣고 했으면 좋았을 걸.
+        min_i = kiosks.index(min(kiosks))
 
-        if not is_pass:
-            min_i = kiosks.index(min(kiosks))
-            kiosk[]
+        if kiosks[min_i] < customer[0]:
+            kiosks[min_i] = customer[0] + timedelta(minutes=customer[1])
+            counts[min_i] += 1
+        else:
+            kiosks[min_i] += timedelta(minutes=customer[1])
+            counts[min_i] += 1
 
-    return 0
+    print(counts)
+    return max(counts)
 
 
 if __name__ == '__main__':
