@@ -1,4 +1,6 @@
 # Definition for a binary tree node.
+
+
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
@@ -6,34 +8,45 @@
 #         self.right = right
 
 class Solution:
+    def __init__(self):
+        self.prev = None
+        self.cand = []
+
+    @staticmethod
+    def swap(a, b):
+        temp = a.val
+        a.val = b.val
+        b.val = temp
 
     def inorderTravel(self, root: TreeNode):
-        leftSubTree = self.inorderTravel(root.left) if root.left else []
-        rightSubTree = self.inorderTravel(root.right) if root.right else []
+        # left -> root -> right
+        # should be increasing sequence
+        # 1 2 3 4 5 6
+        # 1 6 3 4 5 2 -> change 6, 2
+        # 3 2 -> change 3, 2
+        # change str of first decreasing and end of second decreasing
+        if root.left:
+            self.inorderTravel(root.left)
 
-        filteredLeft = next(filter(lambda node: node.val > root.val, leftSubTree))
+        if self.prev:
+            if self.prev.val > root.val:
+                self.cand += [self.prev, root]
 
-        if filteredLeft:
-            temp = filteredLeft
-            filteredLeft = root
-            root = temp
+        self.prev = root
 
-        filteredRight = next(filter(lambda node: node.val > root.val, rightSubTree))
-
-        if filteredRight:
-            temp = filteredRight
-            filteredRight = root
-            root = temp
-
-        return leftSubTree + rightSubTree + [root]
+        if root.right:
+            self.inorderTravel(root.right)
 
     def linearSolution(self, root: TreeNode) -> None:
         # The root of subtree is bigger than leftside and smaller than rightside
-
         visitedNodes = self.inorderTravel(root)
+        self.swap(self.cand[0], self.cand[-1])
 
-        for node in visitedNodes:
-            print(node.val)
+        # for node in visitedNodes:
+        #     print(node.val)
+
+    def constantSolution(self, root: TreeNode) -> None:
+        pass
 
     def recoverTree(self, root: TreeNode) -> None:
         """
