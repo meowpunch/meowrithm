@@ -27,7 +27,7 @@ class Solution:
             curr.next = None
 
             # insert
-            if not resHead.ne xt:
+            if not resHead.next:
                 resHead.next = curr
                 curr = post
 
