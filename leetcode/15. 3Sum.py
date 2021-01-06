@@ -4,26 +4,26 @@ from typing import List
 class Solution:
     @staticmethod
     def twoSum(nums: List[int], n: int) -> List[List[int]]:
-        # [1,2,1,3,-1,2,0], 3 -> [[1,2], [0,3]
+        # for sorted list
         answer = list()
-        mem = dict()
 
-        for idx, y in enumerate(nums):
-            # x + y = n -> x = n - y
-            x = mem.get(n - y)
+        # two pointers
+        left, right = 0, len(nums) - 1
+        while left < right:
+            leftV, rightV = nums[left], nums[right]
+            summation = leftV + rightV
 
-            def removeDuplicates(e):
-                for a in answer:
-                    if e in a:
-                        return False
+            if summation == n:
+                answer.append([leftV, rightV])
 
-                return True
+                left += 1
+                while left < right and leftV == nums[left]:
+                    left += 1
 
-            if x is not None:
-                if removeDuplicates(x):
-                    answer.append([x, y])
-            else:
-                mem[y] = y
+            elif summation > n:
+                right -= 1
+            elif summation < n:
+                left += 1
 
         return answer
 
@@ -33,37 +33,24 @@ class Solution:
 
         # unique triplets
         answer = list()
-        mem = dict()
 
-        if len(nums) < 3:
-            return answer
+        nums.sort()
 
         for idx, z in enumerate(nums):
-            # x + y + z = 0 -> x + y = -z
+            # x + y = -z
 
-            tmp = mem.get(-z)
-            if not tmp:
-                tmp = self.twoSum(nums[idx + 1:], -z)
-                if not tmp:
-                    continue
+            # prevent duplication
+            if idx > 0 and z == nums[idx - 1]:
+                continue
 
-            candidates = map(lambda l: l + [z], tmp)
+            for candidate in self.twoSum(nums[idx + 1:], -z):
+                answer.append(candidate + [z])
 
-            # how to distinguish [-1,0,1]  and [0,1,-1]
-            def removeDuplicates(b):
-                target = set(b)
-                for ansEle in answer:
-                    if target == set(ansEle):
-                        return False
-                return True
-
-            filtered = filter(removeDuplicates, candidates)
-            answer = answer + list(filtered)
         return answer
 
 
 if __name__ == '__main__':
-    # print(Solution().threeSum([0,0,0]))
+    print(Solution().threeSum([0,0,0]))
     print(Solution().threeSum([-1,0,1,2,-1,-4]))
 
     # print(Solution().twoSum([1,2,3,-1,1,0], 2))
