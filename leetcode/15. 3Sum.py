@@ -1,44 +1,59 @@
-import itertools
 from typing import List
 
 
 class Solution:
     @staticmethod
-    def twoSum(nums: List[int], target: int) -> List[int]:
-        print('list: {}, target: {}'.format(nums, target))
-        # answer = [1, 2]
+    def twoSum(nums: List[int], n: int) -> List[List[int]]:
+        # [1,2,1,3,-1,2,0], 3 -> [[1,2], [0,3]
+        answer = list()
 
-        # value: index
-        mem = dict()
-        for idx, n in enumerate(nums):
-            remain = target - n
-            if remain in mem.keys():
-                return [remain, n]
-            else:
-                mem[n] = idx
+        for idx, y in enumerate(nums):
+            # x + y = n -> x = n - y
+            for x in nums[idx + 1:]:
+                if x == n - y:
+                    def removeDuplicates(e):
+                        for a in answer:
+                            if e in a:
+                                return False
 
-        return -1
+                        return True
+
+                    if removeDuplicates(x):
+                        answer.append([x, y])
+
+        return answer
 
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        # Input: nums = [-1, 0, 1, 2, -1, -4]
+        # Output: [[-1, -1, 2], [-1, 0, 1]]
 
-        result = []
-        mem = dict()
+        # unique triplets
+        answer = list()
 
-        # for idx, num in enumerate(nums):
-        #     mem[num] =
+        if len(nums) < 3:
+            return answer
 
-        for idx, n in enumerate(nums):
-            temp = nums.copy()
-            temp.remove(n)
-            res = self.twoSum(temp, -1 * n)
-            print(res)
-            if res == -1:
+        for idx, z in enumerate(nums):
+            # x + y + z = 0 -> x + y = -z
+
+            tmp = self.twoSum(nums[idx + 1:], -z)
+            if not tmp:
                 continue
-            else:
-                result.append([n] + res)
 
-        return result
+            candidates = map(lambda l: l + [z], tmp)
+
+            # how to distinguish [-1,0,1]  and [0,1,-1]
+            def removeDuplicates(b):
+                target = set(b)
+                for ansEle in answer:
+                    if target == set(ansEle):
+                        return False
+                return True
+
+            filtered = filter(removeDuplicates, candidates)
+            answer = answer + list(filtered)
+        return answer
 
 
 if __name__ == '__main__':
-    print(Solution().threeSum([-1, 0, 1, 2, -1, -4]))
+    print(Solution().threeSum([0,0,0]))
