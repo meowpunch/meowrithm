@@ -5,6 +5,7 @@ class Solution:
         # SC - O(1)
         L = len(s)
         left, right = 0, 0
+
         for i in range(L):
 
             def twoPointers(l: int, r: int):
