@@ -37,17 +37,15 @@ class Solution:
 
         # init
         length = 1
-        tempValue = nums[0]
 
         # L >= 1
         for currIndex in range(1, len(nums)):
-            currValue = nums[currIndex]
-            if tempValue != currValue:
-                nums[length] = currValue
+            if nums[currIndex - 1] != nums[currIndex]:
+                nums[length] = nums[currIndex]
                 length += 1
-                tempValue = currValue
 
         return length
 
     def removeDuplicates(self, nums: List[int]) -> int:
         return self.inplaceAnswer(nums)
+
