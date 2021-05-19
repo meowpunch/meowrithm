@@ -1,14 +1,21 @@
 from collections import deque
+from typing import List
+
+
+def inplaceArray(arr: List[int]):
+    arr[1] = 2
+
+
+def testArray():
+    arr = list(range(5))
+
+    inplaceArray(arr)
+
+    print(arr)
+
 
 if __name__ == '__main__':
-    print(list(range(1, 5)))
-
-    for i in range(0,5):
-        print(i)
-
-    q = deque()
-    q.append(3)
-    q.popleft()
+   testArray()
 
     # a = [1,2,3]
     # a.pop()
