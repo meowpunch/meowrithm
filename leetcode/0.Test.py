@@ -6,7 +6,10 @@ def inplaceArray(arr: List[int]):
     arr[1] = 2
 
 def sortArray(arr: List[int]):
-    arr.sor
+    arr.sort()
+
+def reverseArray(arr: List[int]):
+    return reversed(arr)
 
 def testArray():
     arr = list(range(5))
