@@ -5,6 +5,8 @@ from typing import List
 def inplaceArray(arr: List[int]):
     arr[1] = 2
 
+def sortArray(arr: List[int]):
+    arr.sor
 
 def testArray():
     arr = list(range(5))
@@ -12,6 +14,12 @@ def testArray():
     inplaceArray(arr)
 
     print(arr)
+
+
+def testDict():
+    d = dict()
+
+    d.get(1, -1)
 
 
 if __name__ == '__main__':
