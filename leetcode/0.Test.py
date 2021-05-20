@@ -46,6 +46,9 @@ if __name__ == '__main__':
     # testArray()
     initArray()
 
+
+    
+
     # a = [1,2,3]
     # a.pop()
     # a.append([2, 3])
