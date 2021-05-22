@@ -49,7 +49,8 @@ if __name__ == '__main__':
     # testArray()
     # initArray()
 
-    print("asd:  / 123sDd".is)
+    # print("asd:  / 123sDd".is)
+    print("-12".isnumeric())
 
     
 
