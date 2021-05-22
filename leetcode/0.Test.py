@@ -49,7 +49,7 @@ if __name__ == '__main__':
     # testArray()
     # initArray()
 
-    print(list("asd").sort())
+    print("asd:  / 123sDd".is)
 
     
 
