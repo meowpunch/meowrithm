@@ -2,6 +2,9 @@ from collections import deque
 from typing import List
 
 
+def testString(s: str):
+    pass
+
 def inplaceArray(arr: List[int]):
     arr[1] = 2
 
@@ -44,8 +47,9 @@ def testDict():
 
 if __name__ == '__main__':
     # testArray()
-    initArray()
+    # initArray()
 
+    print(list("asd").sort())
 
     
 
