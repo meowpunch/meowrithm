@@ -8,8 +8,12 @@ public class Test {
     public static void main(String[] args) {
         ListNode head = new ListNode(1, new ListNode(2, new ListNode(3)));
 
-        System.out.println("hi");
-//        ReversedLinkedList solution = new ReversedLinkedList();
-//        System.out.println(solution.iteration(head));
+        ReversedLinkedList solution = new ReversedLinkedList();
+        ListNode reversed = solution.reverseList(head);
+
+        while (reversed != null) {
+            System.out.print(reversed.val + " ");
+            reversed = reversed.next;
+        }
     }
 }

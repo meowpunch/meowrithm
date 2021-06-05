@@ -1,9 +1,10 @@
 package main;
 
+
 import main.structure.ListNode;
 
 public class ReversedLinkedList {
-    public ListNode recursion(ListNode head) {
+    private ListNode recursion(ListNode head) {
         if (head == null || head.next == null) {
             return head;
         }
@@ -14,7 +15,7 @@ public class ReversedLinkedList {
         return newHead;
     }
 
-    public ListNode iteration(ListNode head) {
+    private ListNode iteration(ListNode head) {
         ListNode prev = null;
         ListNode curr = head;
         while (curr != null) {
