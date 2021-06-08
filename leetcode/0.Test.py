@@ -51,8 +51,7 @@ if __name__ == '__main__':
 
     # print("asd:  / 123sDd".is)
     i = 2**33
-    print(i)
-    dict().update(
+
 
     
 
