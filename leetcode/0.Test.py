@@ -50,7 +50,8 @@ if __name__ == '__main__':
     # initArray()
 
     # print("asd:  / 123sDd".is)
-    print("-12".isnumeric())
+    i = 2**33
+    print(i)
 
     
 
