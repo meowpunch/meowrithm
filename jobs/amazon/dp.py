@@ -1,3 +1,7 @@
+"""
+rem 만큼 ids 의 원소를 지울 수 있을때, ids 의 최소 distinct 숫자들 수
+테스트케이스 8개 중 2개 통과
+"""
 def removeProduct(num, ids, rem):
     mem = dict()
 
