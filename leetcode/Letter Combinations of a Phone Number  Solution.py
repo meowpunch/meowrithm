@@ -25,5 +25,24 @@ class Solution:
 
             return res
 
+    def backtracking(self, digits: str) -> List[str]:
+        result = []
+
+        # explore
+        def explore(s: str, c: int):
+            # accept
+            if c == len(digits):
+                result.append(s)
+                return
+
+                # explore
+            d = digits[c]
+            for ch in self.digitToCharacters(d):
+                explore(s + ch, c + 1)
+
+        explore("", 0)
+        return [] if not digits else result
+
     def letterCombinations(self, digits: str) -> List[str]:
-        return [] if not digits else self.dfs(digits)
+        return self.backtracking(digits)
+        # return [] if not digits else self.dfs(digits)

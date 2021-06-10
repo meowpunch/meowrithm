@@ -57,6 +57,8 @@ if __name__ == '__main__':
     s = ""
     if not s:
         print("empty")
+
+    set().a
     # def func(x):
     #     print(x)
     #     return True
