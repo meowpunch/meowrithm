@@ -49,40 +49,14 @@ def a(l: List[int]) -> List[tuple]:
     return []
 
 
-def removeProduct(num, ids, rem):
-    mem = dict()
-
-    for id in ids:
-        mem[id] = mem.get(id, 0) + 1
-
-    print(mem)
-    # sort by value
-    sortedMem = sorted(mem.items(), key=lambda x: x[1], reverse=True)
-
-    print(sortedMem)
-    for k, v in sortedMem:
-        if rem - v < 0:
-            break
-        else:
-            rem = rem - v
-            sortedMem[k] = 0
-
-    return len(list(map(lambda t: t[0], filter(lambda x: x[1] > 0, sortedMem))))
-
 if __name__ == '__main__':
 
-    removeProduct(5, [1,2,2,3,3], 3)
     # testArray()
     # initArray()
 
-    # print("asd:  / 123sDd".is)
-    i = 2**33
-
-    m = {1:2, 3:4, 5:3, -1:3}
-    s = sorted(m.items(), key = lambda x: x[1])
-
-    for k, v in s:
-        print(k, v)
+    s = ""
+    if not s:
+        print("empty")
     # def func(x):
     #     print(x)
     #     return True
