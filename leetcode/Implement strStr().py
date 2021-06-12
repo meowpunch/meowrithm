@@ -3,27 +3,6 @@ from typing import List
 
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        """
-        mississippi
-         issip
-
-        issip
-        00010
-        ------------------
-        aabaaabaaac
-        aabaaac
-            aabaaac
-
-        aabaaac
-        0101220
-        ------------------
-        ABABABC
-        ABABC
-          ABABC
-
-        ABABC
-        00120
-        """
         if len(needle) == 0:
             return 0
 
@@ -68,6 +47,27 @@ class Solution:
         return lps
 
 if __name__ == '__main__':
+    """
+       mississippi
+        issip
+
+       issip
+       00010
+       ------------------
+       aabaaabaaac
+       aabaaac
+           aabaaac
+
+       aabaaac
+       0101220
+       ------------------
+       ABABABC
+       ABABC
+         ABABC
+
+       ABABC
+       00120
+       """
     assert Solution().lps("ababc") == [0, 0, 1, 2, 0]
     assert Solution().lps("aaababaaab") == [0, 1, 2, 0, 1, 0, 1, 2, 3, 4]
     assert Solution().lps("issip") == [0, 0, 0, 1, 0]
