@@ -13,14 +13,26 @@ public class PermMissingElem {
      *
      * (n + 1)n / 2 - summation = the missing element.
      *
+     * int 4bytes 2^32 -> 2 * 10^9 (1 bit is a sign bit) 2,000,000,000
+     *
      * @param arr
      * @return
      */
-    public int solution(int[] arr) {
-        int n = arr.length;
-        int summation = Arrays.stream(arr).sum();
+    public int solutionStream(int[] arr) {
+        long maxNumber = arr.length + 1;
+        long summation = Arrays.stream(arr).parallel().mapToLong(i -> (long) i).sum();
 
-        return (n + 2) * (n + 1) / 2 - summation;
+        return (int) ((maxNumber) * (maxNumber + 1) / 2 - summation);
+    }
+
+    public  int solution(int[] A) {
+        long summation = 0;
+        for (int a: A) {
+            summation += a;
+        }
+        long maxNumber = A.length + 1;
+
+        return (int) ((maxNumber + 1) * maxNumber / 2 - summation);
     }
 
     /**
@@ -53,5 +65,7 @@ public class PermMissingElem {
     // test
     public static void main(String[] args) {
         System.out.println(new PermMissingElem().solution(new int[]{1,2,3}));
+        System.out.println(new PermMissingElem().solution(new int[]{1,2,5,3}));
+        System.out.println(IntStream.rangeClosed(0, 1000000).sum());
     }
 }
