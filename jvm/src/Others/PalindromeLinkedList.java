@@ -1,4 +1,4 @@
-import main.structure.ListNode;
+import Others.structure.ListNode;
 
 public class PalindromeLinkedList {
     public boolean isPalindrome(ListNode head) {

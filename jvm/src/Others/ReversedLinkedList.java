@@ -1,7 +1,7 @@
-package main;
+package Others;
 
 
-import main.structure.ListNode;
+import Others.structure.ListNode;
 
 public class ReversedLinkedList {
     private ListNode recursion(ListNode head) {

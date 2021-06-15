@@ -1,8 +1,6 @@
-package main;
+package Others;
 
-import main.structure.ListNode;
-
-import java.util.Arrays;
+import Others.structure.ListNode;
 
 public class Test {
     public static void main(String[] args) {
