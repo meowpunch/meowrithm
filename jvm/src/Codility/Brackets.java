@@ -3,6 +3,24 @@ package Codility;
 import java.util.Stack;
 
 public class Brackets {
+    public int solution(String S) {
+        // init
+        Stack<Character> stack = new Stack<>();
+
+        for (char c: S.toCharArray()) {
+            if (c == '{' || c == '(' || c == '[') {
+                stack.push(c);
+            } else {
+                if (c == '}' && (stack.empty() || stack.pop() != '{')) return 0;
+                if (c == ')' && (stack.empty() || stack.pop() != '(')) return 0;
+                if (c == ']' && (stack.empty() || stack.pop() != '[')) return 0;
+            }
+        }
+
+        return stack.isEmpty()? 1: 0;
+    }
+
+
     public String matchString(String S) {
         // System.out.println(S);
         switch(S) {
@@ -20,7 +38,7 @@ public class Brackets {
     /**
      * Time, Space - O(N), O(N)
      */
-    public int solution(String S) {
+    public int solution2(String S) {
         // init
         final int N = S.length();
 
@@ -46,5 +64,13 @@ public class Brackets {
     }
 
     public static void main(String[] args) {
+        String a = "1";
+        String b = String.valueOf("123".charAt(0));
+        String c = "1";
+
+        System.out.printf("%s %s %s%n", System.identityHashCode(a), System.identityHashCode(b), System.identityHashCode(c));
+        System.out.println(a == b);
+        System.out.println(a == c);
+        System.out.println(a.equals(b));
     }
 }
