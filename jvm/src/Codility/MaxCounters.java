@@ -3,9 +3,12 @@ package Codility;
 import java.util.Arrays;
 
 public class MaxCounters {
+    // * prerequisites
+    //  N and M are integers within the range [1..100,000];
+    //  each element of array A is an integer within the range [1..N + 1].
 
     /**
-     *  if we know the point of max counter, we only need to know the maximum value at that point.
+     *  Time, Space: O(M+N), O(N)
      */
     public int[] solution(int N, int[] A) {
         // init
@@ -32,12 +35,6 @@ public class MaxCounters {
     }
 
 
-    // let the length of A be M
-    //
-    // * prerequisites
-    //  N and M are integers within the range [1..100,000];
-    //  each element of array A is an integer within the range [1..N + 1].
-    //
     //  Time, Space: O(n^2), O(n)
     public int[] solution2(int N, int[] A) {
         final int M = A.length;
