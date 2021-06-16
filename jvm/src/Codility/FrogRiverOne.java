@@ -13,18 +13,25 @@ public class FrogRiverOne {
 
         // init
         boolean[] leaves = new boolean[X + 1];
-        Arrays.fill(leaves, false);
+        // Arrays.fill(leaves, false); // default is false
 
         // O(N)
-        int x = 0;
         for (int i = 0; i < N; i++) {
             if (!leaves[A[i]]) {
                 leaves[A[i]] = true;
-                x += 1;
-                if (x == X) return i;
+                X -= 1;
+                if (X == 0) return i;
             }
         }
 
         return -1;
+    }
+
+    public static void main(String[] args) {
+        boolean[] bArr = new boolean[10];
+        int[] iArr = new int[10];
+
+        System.out.println(bArr[0]);
+        System.out.println(iArr[0]);
     }
 }
