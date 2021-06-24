@@ -7,12 +7,9 @@ public class Flags {
      *  Let the size of A be N
      *
      *  - search the peaks.
-     *      [1, 3, 5, 10]
-     *  - using floor(sqrt(1st idx of peak - last idx of peak))
-     *      9 -> 3
-     *
-     *    x flags -> cover the range, x * (x - 1)
-     *    1st idx of peak - last idx of peak > x^2 - x
+     *      O(N)
+     *  - search numFlags
+     *      O(sqrtN) * O(sqrtN) = O(N)
      */
     public int solution(int[] A) {
         if (A.length < 3) return 0;
