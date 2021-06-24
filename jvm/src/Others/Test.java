@@ -38,6 +38,9 @@ public class Test {
         System.out.printf("%s %s\n", obj1.a, obj2.a);
         System.out.printf("%s %s\n", obj1.hashCode(), obj2.hashCode());
 
+
+        String s = "123";
+        int occurrence = 1;
     }
 }
 
