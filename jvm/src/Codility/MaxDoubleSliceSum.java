@@ -20,7 +20,10 @@ public class MaxDoubleSliceSum {
         maxStarting[N - 1] = 0;
         for (int i = N - 2; i >= 0; i--) maxStarting[i] = Math.max(maxStarting[i + 1], 0) + A[i];
 
-        for (int i = 1; i < N - 1; i++) max = Math.max(maxEnding[i - 1] + maxStarting[i + 1], max);
+        for (int i = 1; i < N - 1; i++) max = Math.max(
+                Math.max(maxEnding[i - 1], 0) + Math.max(maxStarting[i + 1], 0),
+                max
+        );
 
         return max;
     }
