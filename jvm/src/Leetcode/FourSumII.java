@@ -1,7 +1,10 @@
 package Leetcode;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import static java.util.stream.Collectors.toMap;
 
 public class FourSumII {
     public static void main(String[] args) {
