@@ -1,9 +1,6 @@
 package Amazon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 /**
@@ -14,7 +11,7 @@ public class OptimalUtilization {
     public static void main(String[] args) {
 
         Stream.of(
-                OptimalUtilization.optimizeMemoryUsage(
+                OptimalUtilization.optimizeMemoryUsageHashMap(
                         Arrays.asList(
                                 Arrays.asList(1, 3), Arrays.asList(2, 5), Arrays.asList(3, 7), Arrays.asList(4, 10)
                         ),
@@ -23,7 +20,7 @@ public class OptimalUtilization {
                         ),
                         10
                 ),
-                OptimalUtilization.optimizeMemoryUsage(
+                OptimalUtilization.optimizeMemoryUsageHashMap(
                         Arrays.asList(
                                 Arrays.asList(1, 3), Arrays.asList(2, 5), Arrays.asList(5, 5),
                                 Arrays.asList(3, 7), Arrays.asList(4, 10)
@@ -60,7 +57,7 @@ public class OptimalUtilization {
         Integer tempMax = Integer.MIN_VALUE;
         final List<List<Integer>> answer = new ArrayList<>();
 
-        // O(N + M)
+        // worst case: O(N * M), average case O(N + M)
         while (fPointer < fSize && bPointer >= 0) {
             final List<Integer> fApp = foregroundApps.get(fPointer);
             final List<Integer> bApp = backgroundApps.get(bPointer);
@@ -90,5 +87,36 @@ public class OptimalUtilization {
         }
 
         return answer;
+    }
+
+
+    public static List<List<Integer>> optimizeMemoryUsageHashMap(
+            List<List<Integer>> foregroundApps, List<List<Integer>> backgroundApps, Integer deviceCapacity
+    ) {
+        // requireMemory - combs of index
+        final Map<Integer, List<List<Integer>>> mem = new HashMap<>();
+
+        // O(MN)
+        for (List<Integer> fApp : foregroundApps) {
+            for (List<Integer> bApp : backgroundApps) {
+                final List<Integer> pairIndex = Arrays.asList(fApp.get(0), bApp.get(0));
+                final Integer requiredMemory = fApp.get(1) + bApp.get(1);
+
+                List<List<Integer>> prev = mem.getOrDefault(requiredMemory, new ArrayList<>());
+                prev.add(pairIndex);
+
+                mem.put(requiredMemory, prev);
+            }
+        }
+
+        Integer ansKey = null;
+
+        // O(MN)
+        for (Integer key : mem.keySet()) {
+            if(ansKey == null) ansKey = key;
+            else if(Math.abs(deviceCapacity - key) < Math.abs(deviceCapacity - ansKey)) ansKey = key;
+        }
+
+        return mem.getOrDefault(ansKey, Collections.emptyList());
     }
 }
