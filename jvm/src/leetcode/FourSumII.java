@@ -19,7 +19,7 @@ public class FourSumII {
      * Dynamic programming O(n^2)
      */
     public static int fourSumCount(int[] nums1, int[] nums2, int[] nums3, int[] nums4) {
-        // to store occurence
+        // to store occurrence
         Map<Integer, Integer> occurence = new HashMap<>();
 
         for (int i: nums1) {
