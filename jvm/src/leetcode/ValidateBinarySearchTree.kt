@@ -5,11 +5,9 @@ class TreeNode(var `val`: Int) {
      var right: TreeNode? = null
 }
 
-class Solution {
+class ValidateBinarySearchTree {
 
     /*
-     *
-     *
      *       root
      *    left  right
      *
