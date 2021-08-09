@@ -32,6 +32,7 @@ class Statistic {
 }
 
 public class CalculateStatistics {
+
     /**
      *
      * HashMap
@@ -86,11 +87,7 @@ public class CalculateStatistics {
                     //  (prevAvg * prevNum + executiontime) / (prevNum + 1)
                 }
             }
-
-
-
         }
-
 
         // output
         System.out.println(mem);
