@@ -8,7 +8,6 @@ import java.util.Queue;
 public class ExploringDS {
 
     public static void main(String[] args) {
-        Queue<Integer> que = new ArrayDeque<>();
-        new LinkedList<Integer>();
+
     }
 }
