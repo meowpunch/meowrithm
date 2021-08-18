@@ -1,7 +1,5 @@
 package crackingthecodinginterview
 
-import com.sun.org.apache.xpath.internal.operations.Bool
-
 class AllUniqueCharacters {
 
     /*
