@@ -1,4 +1,7 @@
-import others.structure.ListNode;
+package others;
+
+
+import data.ListNode;
 
 public class PalindromeLinkedList {
     public boolean isPalindrome(ListNode head) {

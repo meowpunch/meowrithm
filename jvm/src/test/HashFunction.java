@@ -1,4 +1,4 @@
-package others;
+package test;
 
 public class HashFunction {
 
