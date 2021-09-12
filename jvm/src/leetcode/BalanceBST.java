@@ -43,10 +43,10 @@ public class BalanceBST {
         final Integer middleIndex = (numberOfNodes - 1) / 2;
         final TreeNode root = ascendingOrderNodeList.get(middleIndex);
 
-        // build left sub tree
+        // build left subTree
         root.setLeft(buildTree(ascendingOrderNodeList.subList(0, middleIndex)));
 
-        // build right sub tree
+        // build right subTree
         root.setRight(buildTree(ascendingOrderNodeList.subList(middleIndex + 1, numberOfNodes)));
 
         return root;
