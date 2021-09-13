@@ -2,7 +2,7 @@ package codility
 
 import scala.annotation.tailrec
 
-object BinaryGap {
+object BinaryGapScala {
   def main(args: Array[String]): Unit = {
     solution(9)
     solution(1041)
