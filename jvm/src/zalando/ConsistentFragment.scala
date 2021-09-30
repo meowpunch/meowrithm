@@ -3,13 +3,16 @@ package zalando
 import scala.annotation.tailrec
 
 object ConsistentFragment {
+  def main(args: Array[String]): Unit = {
+    assert(solution("050550500") == 55)
+  }
+
   /*
    * linear Recursion(tail)
    *
    * @param s:
    */
   def solution(s: String): Int = {
-    "sss".length
     @tailrec
     def recFun(charList: List[Char], prevChar: Char, max: Int): Int =
       charList match {
