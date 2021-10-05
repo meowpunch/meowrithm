@@ -15,3 +15,4 @@ userBase
   .map(user => user.name)
 
 twentySomethings.foreach(println)
+
