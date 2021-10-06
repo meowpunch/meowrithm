@@ -12,7 +12,6 @@ class CoinChange {
         f[0] = 0
 
         for (i in 1..amount) {
-            println(f.toList())
             val m = coins
                 .map { i - it }
                 .filter { it >= 0 }

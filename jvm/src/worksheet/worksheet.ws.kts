@@ -24,8 +24,21 @@ a ?: 3
 
 a = 5
 
-a ?:2
+a ?: 2
+
+
 
 IntArray(3) { -1 }.toList()
 //IntArray(3)(-1).toList()
 
+(1..5).flatMap { i ->
+    (1..3).map { j -> Pair(i, j) }
+}
+
+(1..5).map { i ->
+    (1..3).map { j -> Pair(i, j) }
+}
+
+IntArray(3) { -1 }.maxOr
+
+(1 until 5)
