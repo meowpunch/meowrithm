@@ -1,5 +1,7 @@
 package leetcode
 
+import data.TreeNode
+
 class SymmetricTree {
     fun isSymmetric(root: TreeNode?): Boolean {
         return isMirror(root, root)

@@ -1,8 +1,9 @@
 package leetcode;
 
+import data.TreeNode;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class BalanceBST {
     /*
