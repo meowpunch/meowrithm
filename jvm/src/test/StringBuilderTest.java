@@ -1,5 +1,7 @@
 package test;
 
+import java.util.ArrayList;
+
 public class StringBuilderTest {
 
     public static void main(String[] args) {
@@ -12,6 +14,11 @@ public class StringBuilderTest {
         stringBuilder.append("asd");
         stringBuilder.append("bvd");
         stringBuilder.append("bvc");
+
         System.out.println(stringBuilder);
+        ArrayList<String> a = new ArrayList<>();
+
+
+
     }
 }

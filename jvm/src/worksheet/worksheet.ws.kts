@@ -39,6 +39,11 @@ IntArray(3) { -1 }.toList()
     (1..3).map { j -> Pair(i, j) }
 }
 
-IntArray(3) { -1 }.maxOr
+
 
 (1 until 5)
+
+val intArray = IntArray(3) { -1 }
+val arrayInt = Array(3) { -1 }
+
+listOf(1, 2, 3)

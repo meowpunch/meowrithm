@@ -24,4 +24,7 @@ fun main() {
 
     println(i1)
     println(i2.a)
+
+    val intArray = IntArray(3) { -1 }
+    val arrayInt = Array(3) { -1 }
 }
