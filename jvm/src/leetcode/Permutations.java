@@ -34,28 +34,27 @@ public class Permutations {
         return result;
     }
 
+    /*
+                    [ ]
+             [1]         [2] [3]
+        [1, 2] [1, 3]
+       [1,2,3] [1,3,2]
+    */
     public List<List<Integer>> permute(int[] nums) {
-        List<List<Integer>> ans = new ArrayList<>();
-
-        // inPlace operation
-        permInplace(ans, nums, new ArrayList<>());
-
-        return ans;
+        List<List<Integer>> perm = new ArrayList<>();
+        backtrack(perm, new ArrayList<>(), nums);
+        return perm;
     }
 
-    private void permInplace(List<List<Integer>> permutations, int[] origin, List<Integer> to) {
-        if (to.size() == origin.length) {
-            permutations.add(new ArrayList<>(to));
-        } else {
-            for (int e : origin) {
-                // O(N)
-                if (!to.contains(e)) {
-                    // search
-                    to.add(e);
-                    permInplace(permutations, origin, to);
-
-                    // backtrack
-                    to.remove(to.size() - 1);
+    private void backtrack(List<List<Integer>> perm, List<Integer> curr, int[] nums) {
+        // base case
+        if (curr.size() == nums.length) perm.add(new ArrayList<>(curr));
+        else {
+            for (int n : nums) {
+                if (!curr.contains(n)) {
+                    curr.add(n);
+                    backtrack(perm, curr, nums);
+                    curr.remove(curr.size() - 1);
                 }
             }
         }

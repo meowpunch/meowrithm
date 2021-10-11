@@ -16,3 +16,11 @@ userBase
 
 twentySomethings.foreach(println)
 
+
+class AClass(_a: Int) {
+  val a = _a
+}
+
+val a = new AClass(3)
+val a = null
+
