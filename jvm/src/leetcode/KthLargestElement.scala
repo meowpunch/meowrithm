@@ -5,5 +5,4 @@ object KthLargestElement {
     nums.toSet.toList
       .sorted(Ordering[Int].reverse)
       .take(k).last
-
 }
