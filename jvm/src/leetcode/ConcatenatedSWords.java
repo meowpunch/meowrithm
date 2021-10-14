@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
     Origin: `https://leetcode.com/problems/concatenated-words/`
     related to `https://leetcode.com/problems/word-break/`
  */
-public class ConcatenatedSWords {
+public class ConcatenatedWords {
 
     public static void main(String[] args) {
         System.out.println(
-                new ConcatenatedSWords()
+                new ConcatenatedWords()
                         .findAllConcatenatedWordsInADict(
                                 new String[]{"cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat"}
                         ));
