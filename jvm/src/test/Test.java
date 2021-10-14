@@ -66,6 +66,10 @@ public class Test {
         Stack<Integer> stk1 = new Stack<>();
         List<Integer> al = new ArrayList<>();
 
+        System.out.println("abcabcabc".indexOf("abc"));
+        System.out.println("abcabcabc".lastIndexOf("abc"));
+
+
 
     }
 }
