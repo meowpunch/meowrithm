@@ -1,8 +1,6 @@
 package leetcode;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -19,12 +17,56 @@ public class ConcatenatedSWords {
                         ));
     }
 
+
+    public List<String> findAllConcatenatedWordsInADict(String[] words) {
+        return optimization(words);
+//        return brutesForce(words);
+    }
+
+
+    /*
+        words: ["cat","cats","catsdogcats","dog","dogcatsdog","hippopotamuses","rat","ratcatdogcat"]
+        word: catsdogcats
+     */
+    private List<String> optimization(String[] words) {
+        List<String> ans = new ArrayList<>();
+        Set<String> wordSet = new HashSet<>();
+        Arrays.sort(words, Comparator.comparingInt(String::length));
+
+        for (String word: words) {
+            if(!wordSet.isEmpty() && isConcatenatedWithDP(word, wordSet)) ans.add(word);
+
+            wordSet.add(word);
+        }
+
+        return ans;
+    }
+
+    private boolean isConcatenatedWithDP(String word, Set<String> wordSet) {
+        boolean[] f = new boolean[word.length() + 1];
+        f[0] = true;
+
+        for (int i = 1; i <= word.length(); i++) {
+            // j
+            for (int j = i - 1; j >= 0; j--) {
+                if (f[j] && wordSet.contains(word.substring(j, i))) {
+                    f[i] = true;
+                    break;
+                }
+            }
+        }
+
+        return f[word.length()];
+    }
+
+
+
     /*
         for word <- words
             if isConcatenated
         yield word
      */
-    public List<String> findAllConcatenatedWordsInADict(String[] words) {
+    private List<String> brutesForce(String[] words) {
         if (words.length == 1) return Collections.emptyList();
         return Arrays.stream(words)
                 .filter(w ->

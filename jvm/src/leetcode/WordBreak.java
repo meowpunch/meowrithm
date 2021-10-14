@@ -1,9 +1,8 @@
 package leetcode;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import data.Trie;
+
+import java.util.*;
 
 public class WordBreak {
 
@@ -70,9 +69,22 @@ public class WordBreak {
 
     /*
         Trie
+
+        cat cats dog astdog
+             root
+            c   d
+            a   o
+            t   g
+            s
+
+            catsdog
+           01234567
+
+           dp: [f, f, t, t, f, t]
+
      */
     public boolean dpWithTrie(String s, List<String> wordDict) {
-
+        throw new UnsupportedOperationException();
     }
 
     /*
