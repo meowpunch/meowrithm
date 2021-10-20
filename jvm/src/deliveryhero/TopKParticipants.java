@@ -23,6 +23,7 @@ class Participant {
 }
 
 public class TopKParticipants {
+    // With bucket sort, we could improve algorithm.
     public List<String> topKParticipants(List<Participant> participants, int k) {
         return participants.stream()
                 .sorted((l, r) -> r.getScore() - l.getScore())
