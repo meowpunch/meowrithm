@@ -24,3 +24,15 @@ class AClass(_a: Int) {
 val a = new AClass(3)
 val a = null
 
+def f(a: Int, arr: Array[Int]): Unit = {
+  // a = 2 // Invalid to reassignment to val
+  arr.update(0, 1)
+}
+
+var arr = Array(0,1,2)
+
+f(1, arr)
+
+print(arr.mkString("Array(", ", ", ")"))
+
+print(List(1,2,3)(2))
