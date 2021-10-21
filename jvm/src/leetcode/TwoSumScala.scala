@@ -5,7 +5,7 @@ import scala.annotation.tailrec
 object TwoSumScala {
   def main(args: Array[String]): Unit = {
     println(solution(List(5, 2, 1, 4, 7), 6))
-    println(solution(List(5, 2, 1, 4, 7), 10))
+    println(solution(List(5, 2, 1, 4, 7), 10)) // throw IllegalArgumentException
   }
 
   /**
@@ -30,7 +30,7 @@ object TwoSumScala {
         case (v, i) :: tail =>
           mem.get(t - v) match {
             case Some(j) => List(i, j)
-            case None => loop(i + 1, mem + (xs(i) -> i))
+            case None => loop(tail, mem + (v -> i))
           }
       }
     }

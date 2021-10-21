@@ -48,5 +48,7 @@ List((1 -> 2))
 List((1 -> 2 -> 3))
 
 (1, 2)
-(1 -> 2)
+1 -> 2
 
+Array(Array(4,0,0,0),Array(3),Array(3,4,40,1),Array(50,2)).transpose
+List(List(4,0,0,0),List(3),List(3,4,40,1),List(50,2)).transpose
