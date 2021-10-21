@@ -9,7 +9,7 @@ object PermutationsScala {
   */
   def permute(nums: Array[Int]): List[List[Int]] = {
     def permute(xs: List[Int]): List[List[Int]] =
-      if (xs.isEmpty) return List(List())
+      if (xs.isEmpty) List(List())
       else
         for {
           i <- xs

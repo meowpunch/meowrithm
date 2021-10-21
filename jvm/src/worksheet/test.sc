@@ -36,3 +36,17 @@ f(1, arr)
 print(arr.mkString("Array(", ", ", ")"))
 
 print(List(1,2,3)(2))
+
+
+List().head
+List().tail
+List(1).tail
+
+List(5,3,1,4).zipWithIndex
+
+List((1 -> 2))
+List((1 -> 2 -> 3))
+
+(1, 2)
+(1 -> 2)
+
