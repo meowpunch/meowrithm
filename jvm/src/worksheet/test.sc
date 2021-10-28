@@ -25,12 +25,12 @@ val a = new AClass(3)
 val a = null
 
 def f(a: Int, arr: Array[Int]): Unit = {
-  // a = 2 // Invalid to reassignment to val
+  print(arr.mkString("Array(", ", ", ")"))
   arr.update(0, 1)
 }
 
-var arr = Array(0,1,2)
-
+val arr = Array(0,1,2)
+arr.update(1, 3)
 f(1, arr)
 
 print(arr.mkString("Array(", ", ", ")"))
@@ -50,5 +50,30 @@ List((1 -> 2 -> 3))
 (1, 2)
 1 -> 2
 
-Array(Array(4,0,0,0),Array(3),Array(3,4,40,1),Array(50,2)).transpose
+val A1 = Array(Array(4,0,0,0),Array(3),Array(3,4,40,1),Array(50,2))
+
+A1.transpose
 List(List(4,0,0,0),List(3),List(3,4,40,1),List(50,2)).transpose
+
+
+A1.reduceLeft((x1, x2) =>
+  x1.zipAll(x2, Int.MinValue, Int.MinValue)
+    .map { case (x, y) => x max y }
+)
+
+Array(4,0,0,0).zipAll(Array(3,2,1), 100, 100)
+
+List(1).zipAll(List(1,2,3,4), 100, -100)
+
+List(1).zip(List(1,2))
+
+List(1,2) zip List(1)
+
+List(1,2).zipAll(List('a'), 3, 'c')
+
+List(1).zipAll(List('a', 'b'), 3, 'c')
+
+val s = "abc"
+val n = 10
+f"${s}%-" + n + "s"
+String.format("%-" + n + "s", n)

@@ -41,4 +41,21 @@ primes.takeWhile(_ < 6).size
 
 primes.takeWhile(_ < 6).foldLeft(0)((a, _) => a + 1)
 
+def sieve(xs: LazyList[Int]): LazyList[Int] =
+  xs.head #:: sieve(xs.tail.filter(_ % xs.head != 0))
 
+sieve(LazyList.from(2)).takeWhile(_ < 30).size
+
+LazyList.empty == LazyList()
+
+
+def sieve2(xs: LazyList[Int]): LazyList[Int] =
+  sieve2(xs.tail.filter(_ % xs.head != 0))
+
+sieve2(LazyList.from(0)).take(0).size
+
+lazy val primess: LazyList[Int] = LazyList.from(2).filter(
+  x => primess.takeWhile(_ <= math.sqrt(x)).forall(x % _ != 0)
+)
+
+primes.take(10).foldLeft(0)((acc, _) => acc + 1)
