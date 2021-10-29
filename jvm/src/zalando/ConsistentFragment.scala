@@ -10,7 +10,7 @@ object ConsistentFragment {
   /*
    * linear Recursion(tail)
    *
-   * @param s:
+   * dynamic programming
    */
   def solution(s: String): Int = {
     @tailrec
