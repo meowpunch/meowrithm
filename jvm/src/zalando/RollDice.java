@@ -21,7 +21,7 @@ public class RollDice {
      *
      * @param A: the array of the remembered rolls, the length N
      * @param F: the length of the forgotten rolls
-     * @param M: the mean of all of the results
+     * @param M: the mean of all the results
      * @return the array of the forgotten rolls or [0]
      */
     public int[] solution(int[] A, int F, int M) {

@@ -8,11 +8,10 @@ object ClosetNumberScala {
     )
   }
 
-  def solution(xs: List[Int], t: Int) =
+  def solution(xs: List[Int], t: Int): Int =
     xs.reduce {
-      case (l, r) => {
+      case (l, r) =>
         if (math.abs(r - t) < math.abs(l - t)) r
         else l
-      }
     }
 }

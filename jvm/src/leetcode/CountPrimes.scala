@@ -3,7 +3,7 @@ package leetcode
 import scala.annotation.tailrec
 import scala.collection.immutable.HashMap
 
-class CountPrimes {
+object CountPrimes {
 
   val primes: LazyList[Int] = 2 #:: LazyList.from(3).filter(
     x => primes.takeWhile(_ <= math.sqrt(x)).forall(x % _ != 0)
