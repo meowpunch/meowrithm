@@ -1,6 +1,8 @@
 package leetcode;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Set;
 
 public class LRUCache {
 
@@ -61,6 +63,7 @@ public class LRUCache {
 
     private final int c;
     private final HashMap<Integer, Node> m;
+
     // least recently used node
     private Node lru;
     // most recently used node
@@ -160,5 +163,34 @@ public class LRUCache {
         }
 
         System.out.println(sb);
+    }
+}
+
+class LRUCacheWithLinkedHashMap {
+    private final int c;
+    private final LinkedHashMap<Integer, Integer> m;
+
+    public LRUCacheWithLinkedHashMap(int capacity) {
+        this.c = capacity;
+        this.m = new LinkedHashMap<>(capacity);
+    }
+
+    public int get(int key) {
+        if (!m.containsKey(key)) return -1;
+        else {
+            int value = m.get(key);
+
+            m.remove(key);
+            m.put(key, value);
+
+            return value;
+        }
+    }
+
+    public void put(int key, int value) {
+        if (m.containsKey(key)) m.remove(key);
+        else if (c <= m.size()) m.remove(m.keySet().iterator().next());
+
+        m.put(key, value);
     }
 }
