@@ -1,10 +1,13 @@
 package leetcode;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class LRUCache {
 
+    /*
+
+
+     */
     public static void main(String[] args) {
         LRUCache c = new LRUCache(2);
         System.out.println(c.get(1));
@@ -35,7 +38,6 @@ public class LRUCache {
 
     /*
         doubly linked list
-        lru - ??? - mru
      */
     class Node {
         Node(int key, int val) {
@@ -50,7 +52,10 @@ public class LRUCache {
 
         @Override
         public String toString() {
-            return String.valueOf(val);
+            return "Node{" +
+                    "key=" + key +
+                    ", val=" + val +
+                    '}';
         }
     }
 
@@ -71,8 +76,7 @@ public class LRUCache {
         else {
             Node n = m.get(key);
 
-            // move node to mru
-            setMRUNode(n);
+            setNodeToMRU(n);
 
             return n.val;
         }
@@ -82,8 +86,10 @@ public class LRUCache {
         if (m.containsKey(key)) {
             Node n = m.get(key);
 
-            // move node to mru
-            setMRUNode(n);
+            // update value
+            n.val = value;
+
+            setNodeToMRU(n);
         } else {
             Node n = new Node(key, value);
 
@@ -98,13 +104,16 @@ public class LRUCache {
         }
     }
 
-    private void setMRUNode(Node n) {
+    /*
+        considering n is lru or mru.
+     */
+    private void setNodeToMRU(Node n) {
         // delete n
-        if (n.prev != null) n.prev.next = n.next;
-        else lru = n.next;
+        if (isLRU(n)) lru = n.next;
+        else n.prev.next = n.next;
 
-        if (n.next != null) n.next.prev = n.prev;
-        else mru = n.prev;
+        if (isMRU(n)) mru = n.prev;
+        else n.next.prev = n.prev;
 
         addMRUNode(n);
     }
@@ -122,9 +131,21 @@ public class LRUCache {
     }
 
     private void evictLRUNode() {
-        lru = lru.next;
-        if(lru != null) lru.prev = null;
-        else mru = null;
+        if (lru == mru) {
+            lru = null;
+            mru = null;
+        } else {
+            lru = lru.next;
+            lru.prev = null;
+        }
+    }
+
+    private boolean isLRU(Node n) {
+        return n == lru;
+    }
+
+    private boolean isMRU(Node n) {
+        return n == mru;
     }
 
     public void printList() {
