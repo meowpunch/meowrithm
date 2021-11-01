@@ -70,10 +70,14 @@ public class Test {
         System.out.println("abcabcabc".lastIndexOf("abc"));
 
         S.s();
+        System.out.print(S.a);
 
+        new LinkedList();
+        new ArrayList().add(1, 1);
     }
 }
 class S {
+    static Integer a = 0;
     static void s() { System.out.println("static field(method)");}
 }
 
