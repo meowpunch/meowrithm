@@ -77,3 +77,12 @@ val s = "abc"
 val n = 10
 f"${s}%-" + n + "s"
 String.format("%-" + n + "s", n)
+
+println(List(1,3,2).sorted == List(3,2,1).sorted)
+
+Set(1,2) + 3
+
+
+Set(List(1,3,2), List(3,2,1)).map(xs => xs.sorted)
+
+Map.empty.withDefaultValue(false)(1)

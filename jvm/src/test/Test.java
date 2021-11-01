@@ -69,9 +69,12 @@ public class Test {
         System.out.println("abcabcabc".indexOf("abc"));
         System.out.println("abcabcabc".lastIndexOf("abc"));
 
-
+        S.s();
 
     }
+}
+class S {
+    static void s() { System.out.println("static field(method)");}
 }
 
 final class A {
