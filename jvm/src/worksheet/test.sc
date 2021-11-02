@@ -107,3 +107,11 @@ for {
 (1 -> 2)(1)
 
 
+val arr = Array(1,2,3)
+
+Array(
+  Array(1, 3),
+  Array(7, 8),
+  Array(3, 6),
+  Array(2, 2)
+).sortBy(_(0))

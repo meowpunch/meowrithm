@@ -1,8 +1,6 @@
 package leetcode
 
 object NumIsLandScala {
-  def recursive
-
   def numIslands(grid: Array[Array[Char]]): Int = {
     val ds: Vector[(Int, Int)] = Vector((0, 1), (0, -1), (1, 0), (-1, 0))
     val (height, width) = (grid.size, grid.head.size)
@@ -16,7 +14,7 @@ object NumIsLandScala {
 
       for {
         d <- ds
-        val (nr, nc) = (r + d._1, c + d._2)
+        (nr, nc) = (r + d._1, c + d._2)
         if isValid(nr, nc)
       } dfs(nr, nc)
     }
