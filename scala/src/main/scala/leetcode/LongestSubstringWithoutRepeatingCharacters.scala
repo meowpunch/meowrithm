@@ -2,6 +2,8 @@ package leetcode
 
 object LongestSubstringWithoutRepeatingCharacters {
   /*
+    Time/Space: O(N)
+
     - loop in string with index e.g. ('c', 2)
       - if mem has key Char, update prev
       - update mem
