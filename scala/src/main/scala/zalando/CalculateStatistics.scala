@@ -32,9 +32,11 @@ class CalculateStatistics {
       xs match {
         case Nil => acc
         case h :: t => h match {
+          // push
           case (_, ENTER, _) => loop(t, h :: stk, acc)
           case (ext, EXIT, None) =>
             stk match {
+              // pop and accumulate statistics
               case (ent, ENTER, Some(m)) :: st =>
                 acc.get(m) match {
                   case Some(s) => loop(t, st, acc.updated(m, Statistics(m, s.totalTime + ext - ent, s.totalNumber + 1)))
@@ -53,7 +55,7 @@ class CalculateStatistics {
 
 }
 
-case class Statistics(methodName: String, totalTime: Int = 0, totalNumber: Int = 0) {
+case class Statistics(methodName: String, totalTime: Double = 0, totalNumber: Double = 0) {
   def average: Double = totalTime / totalNumber
 }
 
@@ -96,5 +98,6 @@ object CalculateStatistics {
 
     val m = cs.analyze(p)
     println(m)
+    m.foreach(s => println(s"${s._1} avg: ${s._2.average}"))
   }
 }
