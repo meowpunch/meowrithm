@@ -1,7 +1,9 @@
 package leetcode
 
+import data.TreeNode
+
 object BalanceBST {
-  case class TreeNode(value: Int, left: TreeNode = null, right: TreeNode = null)
+
 
   def main(args: Array[String]): Unit = {
     /*
@@ -48,7 +50,7 @@ object BalanceBST {
         case h :: t =>
           h match {
             // go right
-            case TreeNode(_, _, r) => inorder(r :: TreeNode(h.value, h.left, null) :: t, acc)
+            case TreeNode(_, _, r) if r != null => inorder(r :: TreeNode(h.value, h.left, null) :: t, acc)
             // add value
             case TreeNode(v, null, null) => inorder(t, v :: acc)
             // add value and go left

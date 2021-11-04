@@ -2,7 +2,14 @@
 .idea
 *.exe
 
+.DS_Store
+
 /venv
 
 // jvm
 out/
+
+// sbt
+.bsp
+project/
+target/
