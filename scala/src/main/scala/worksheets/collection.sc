@@ -9,3 +9,8 @@ Vector  eC	  eC	   eC	   eC	     eC	     eC	      -
 
    Vector is implemented with tree that every node contains 32 elements of vectors or 32 other tree nodes.
  */
+
+"abc".toList
+"abc".toVector
+
+Map.empty.apply(2)
