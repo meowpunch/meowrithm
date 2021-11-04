@@ -115,3 +115,7 @@ Array(
   Array(3, 6),
   Array(2, 2)
 ).sortBy(_(0))
+
+5 / 2
+List(1,2,3,4,5).splitAt(5 / 2)
+List(1,2,4,5).splitAt(4 / 2)
