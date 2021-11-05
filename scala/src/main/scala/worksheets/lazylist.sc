@@ -44,7 +44,7 @@ primes.takeWhile(_ < 6).foldLeft(0)((a, _) => a + 1)
 def sieve(xs: LazyList[Int]): LazyList[Int] =
   xs.head #:: sieve(xs.tail.filter(_ % xs.head != 0))
 
-sieve(LazyList.from(2)).takeWhile(_ < 30).size
+sieve(LazyList.from(2)).takeWhile(_ < 30).toList
 
 LazyList.empty == LazyList()
 
