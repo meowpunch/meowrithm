@@ -12,5 +12,3 @@ Vector  eC	  eC	   eC	   eC	     eC	     eC	      -
 
 "abc".toList
 "abc".toVector
-
-Map.empty.apply(2)
