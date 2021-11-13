@@ -43,7 +43,18 @@ IntArray(3) { -1 }.toList()
 
 (1 until 5)
 
-val intArray = IntArray(3) { -1 }
-val arrayInt = Array(3) { -1 }
 
-listOf(1, 2, 3)
+
+val intArray = IntArray(3) { -1 }
+val intArray2 = intArrayOf(1, 2, 3)
+val arrayInt = Array(3) { -1 }
+val arrayInt2 = arrayOf(1, 2, 3)
+
+
+
+listOf(1, 2, 3)[0]
+arrayListOf(1, 2, 3)
+
+intArrayOf(5,1,3,4).associateWith { true }
+intArrayOf(5,1,3,4).mapIndexed { i, v -> v to i }.toMap()
+
