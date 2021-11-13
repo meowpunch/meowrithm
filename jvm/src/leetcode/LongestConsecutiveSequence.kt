@@ -19,12 +19,26 @@ class LongestConsecutiveSequence {
 
      */
     fun longestConsecutive(nums: IntArray): Int {
-        return dp(nums)
+        return bruteforce(nums)
     }
 
     private infix fun Int.isConsecutive(x: Int): Boolean = abs(this - x) == 1
 
-    private fun bruteforce(nums: IntArray): Int = TODO()
+    private fun bruteforce(nums: IntArray): Int {
+        var maxLength = 0
+        for (n in nums) {
+            var curr = n
+            var tempLength = 1
+            while (nums.contains(curr + 1)) {
+                tempLength++
+                curr++
+            }
+
+            maxLength = max(maxLength, tempLength)
+        }
+
+        return maxLength
+    }
 
     private fun dp(nums: IntArray): Int {
         val mem = nums.toHashSet()
