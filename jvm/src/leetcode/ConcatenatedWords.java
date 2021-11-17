@@ -29,7 +29,7 @@ public class ConcatenatedWords {
         word: catsdogcats
      */
     private List<String> optimization(String[] words) {
-        List<String> ans = new ArrayList<>();
+        List<String> ans = new LinkedList<>();
         Set<String> wordSet = new HashSet<>();
         Arrays.sort(words, Comparator.comparingInt(String::length));
 
