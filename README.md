@@ -44,7 +44,7 @@ This repository for the following:
 ```scala
   /*
      DP solution with highorder function, immutable data structure(List)
-  */
+   */
   def lengthOfLIS(nums: List[Int]): Int = {
     // List[(Int, Int)] -> List[(maxLength, maxValue)]
     nums.foldLeft(List[(Int, Int)]()) {
