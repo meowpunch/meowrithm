@@ -11,9 +11,14 @@ This repository for the following:
 - immutability, tail recursion, highorder function, lazy evaluation
 
 ### examples
-#### [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
-imperative style with java
+#### Longest Increasing Subsequence [(leetcode)](https://leetcode.com/problems/longest-increasing-subsequence/)
+- imperative style with java
 ```java
+    /*
+       DP solution
+       - f(i) represent the length of LIS ending at index i such that arr[i] is the last element of the LIS.
+       - f(i) = 1 + max( f(j) ) where 0 < j < i and arr[j] < arr[i] or L(i) = 1, if no such j exists
+     */
     public int lengthOfLIS(int[] nums) {
         if (nums == null | nums.length == 0)
             return 0;
@@ -35,9 +40,11 @@ imperative style with java
     }
 ```
 
-functional and declarative style with scala
+- functional and declarative style with scala
 ```scala
-  // scala with highorder, immutable data structure(List)
+  /*
+     DP solution with highorder function, immutable data structure(List)
+  */
   def lengthOfLIS(nums: List[Int]): Int = {
     // List[(Int, Int)] -> List[(maxLength, maxValue)]
     nums.foldLeft(List[(Int, Int)]()) {
