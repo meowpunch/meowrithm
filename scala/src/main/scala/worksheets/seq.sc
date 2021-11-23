@@ -1,3 +1,5 @@
+import java.util
+
 /*
   immutable Stack is deprecated because it is same as List
 
@@ -12,3 +14,9 @@ Vector  eC	  eC	   eC	   eC	     eC	     eC	      -
 
 "abc".toList
 "abc".toVector
+
+
+
+val jal = new java.util.ArrayList[Int]()
+
+jal.add

@@ -1,6 +1,6 @@
 package leetcode
 
-class LongestIncreasingSubsequence {
+class LongestIncreasingSubsequenceKotlin {
     /*
         f(i) represents the longest length of increasing subsequence including i-th element
 
