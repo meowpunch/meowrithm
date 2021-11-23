@@ -4,21 +4,14 @@ This repository for the following:
  - and programming styles: functional, declarative, imperative, object-oriented
 
 
-## Progress
+## progress
  - WIP: rearrange directories by language
 
 ## functional programming
 - immutability, tail recursion, highorder function, lazy evaluation
 
-### [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
-- Input: nums = [10,9,2,5,3,7,101,18]
-- Output: 4 (2, 5, 7, 101)
-
-#### solution
-dynamic programming
- - f(i) represent the length of LIS ending at index i such that arr[i] is the last element of the LIS.
- - f(i) = 1 + max( f(j) ) where 0 < j < i and arr[j] < arr[i]; or L(i) = 1, if no such j exists
-
+### examples
+#### [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
 imperative style with java
 ```java
     public int lengthOfLIS(int[] nums) {
