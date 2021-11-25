@@ -26,8 +26,6 @@ This part will be moved to scala directory
   }
 ```
 
-Of course, the solution can be improved with binary search. Let's focus on comparing programming styles.
-
 - imperative style with java
 ```java
     /*
@@ -55,6 +53,7 @@ Of course, the solution can be improved with binary search. Let's focus on compa
         return res;
     }
 ```
+Of course, the solution can be improved with binary search. Let's focus on comparing programming styles.
 
 #### Maximum Subarray [(leetcode)](https://leetcode.com/problems/maximum-subarray/)
 - tail recursion
@@ -77,4 +76,4 @@ Of course, the solution can be improved with binary search. Let's focus on compa
     loop(nums.toList, 0, Int.MinValue)
   }
 ```
-
+We can solve it with foldLeft as well.
