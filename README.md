@@ -56,14 +56,14 @@ This part will be moved to scala directory
 Of course, the solution can be improved with binary search. Let's focus on comparing programming styles.
 
 #### Maximum Subarray [(leetcode)](https://leetcode.com/problems/maximum-subarray/)
-- tail recursion
+- tail recursion, pattern match
 ```scala
   /*
         - f(i) represents max sum of contiguous subarray ending at index i
         - f(i) <- max (f(i - 1) + arr(i), arr(i))
         return max of f
    */
-  def maxSubArray(nums: Array[Int]): Int = {
+  def maxSubArray(nums: List[Int]): Int = {
     @annotation.tailrec
     def loop(xs: List[Int], acc: Int, m: Int): Int =
       xs match {
@@ -73,7 +73,7 @@ Of course, the solution can be improved with binary search. Let's focus on compa
           loop(t, lm, m max lm)
       }
 
-    loop(nums.toList, 0, Int.MinValue)
+    loop(nums, 0, Int.MinValue)
   }
 ```
 We can solve it with foldLeft as well.
