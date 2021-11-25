@@ -3,15 +3,31 @@ This repository for the following:
  - with multiple languages: java, scala, kotlin, python, c++, javascript
  - and programming styles: functional, declarative, imperative, object-oriented
 
-
-## progress
- - WIP: rearrange directories by language
-
 ## functional programming
-- immutability, tail recursion, highorder function, lazy evaluation
+This part will be moved to scala directory
+- features: immutability, tail recursion, highorder function, pattern match, lazy evaluation
 
 ### examples
 #### Longest Increasing Subsequence [(leetcode)](https://leetcode.com/problems/longest-increasing-subsequence/)
+
+- functional and declarative style with scala
+  - highorder function: foldLeft, map, filter etc..
+  - immutable data structures: list, which is also [persistent](https://en.wikipedia.org/wiki/Persistent_data_structure).
+```scala
+  /*
+     DP solution
+   */
+  def lengthOfLIS(nums: List[Int]): Int = {
+    // List[(Int, Int)] -> List[(maxLength, maxValue)]
+    nums.foldLeft(List[(Int, Int)]()) {
+      case (acc, e) => (acc.filter(_._2 < e).map(_._1).maxOption.getOrElse(0) + 1, e) :: acc
+    }
+      .map(_._1).max
+  }
+```
+
+Of course, the solution can be improved with binary search. Let's focus on comparing programming styles.
+
 - imperative style with java
 ```java
     /*
@@ -40,21 +56,25 @@ This repository for the following:
     }
 ```
 
-- functional and declarative style with scala
+#### Maximum Subarray [(leetcode)](https://leetcode.com/problems/maximum-subarray/)
+- tail recursion
 ```scala
   /*
-     DP solution with highorder function, immutable data structure(List)
+        - f(i) represents max sum of contiguous subarray ending at index i
+        - f(i) <- max (f(i - 1) + arr(i), arr(i))
+        return max of f
    */
-  def lengthOfLIS(nums: List[Int]): Int = {
-    // List[(Int, Int)] -> List[(maxLength, maxValue)]
-    nums.foldLeft(List[(Int, Int)]()) {
-      case (acc, e) => (acc.filter(_._2 < e).map(_._1).maxOption.getOrElse(0) + 1, e) :: acc
-    }
-      .map(_._1).max
+  def maxSubArray(nums: Array[Int]): Int = {
+    @annotation.tailrec
+    def loop(xs: List[Int], acc: Int, m: Int): Int =
+      xs match {
+        case Nil => m
+        case h :: t =>
+          val lm = h max (acc + h)
+          loop(t, lm, m max lm)
+      }
+
+    loop(nums.toList, 0, Int.MinValue)
   }
 ```
-
-Of course, the solution can be improved with binary search. Let's focus on comparing programming styles.
-
-
 
