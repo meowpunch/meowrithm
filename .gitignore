@@ -2,15 +2,16 @@
 .idea
 *.exe
 
+# macOS
 .DS_Store
 
-// python
+# python
 venv/
 
-// java-kotlin
+# java-kotlin
 out/
 
-// scala
+# scala
 .bsp
 project/
 target/
