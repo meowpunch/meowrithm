@@ -4,12 +4,13 @@
 
 .DS_Store
 
-/venv
+// python
+venv/
 
-// jvm
+// java-kotlin
 out/
 
-// sbt
+// scala
 .bsp
 project/
 target/
