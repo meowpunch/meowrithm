@@ -1,7 +1,5 @@
 package leetcode;
 
-import data.Trie;
-
 import java.util.*;
 
 public class WordBreak {
@@ -33,7 +31,7 @@ public class WordBreak {
         for (int i = 0; i < s.length(); i++) {
             for (String w : wordDict) {
                 int j = w.length();
-                if (i - j >= - 1) {
+                if (i - j >= -1) {
                     if ((i - j == -1 || f[i - j]) && s.substring(i - j + 1).startsWith(w)) f[i] = true;
                 }
             }
