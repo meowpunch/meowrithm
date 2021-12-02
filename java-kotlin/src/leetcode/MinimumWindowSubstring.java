@@ -11,19 +11,33 @@ public class MinimumWindowSubstring {
         D A D O B E C O D E B A  N  C
         0 1 2 3 4 5 6 7 8 9 10 11 12
 
+    start
+    ij
+    m - {A: 1, B: 1, C: 1}
 
         expand
         i           j
+        m - {A: 0, B: 0, C: 0, D: -2, E: -1, O: -1}
+
           reduce
           i         j
+          m - {A: 1, B: 0, C: 0, D: -1, E: -1, O: -1}
+
             expand
             i                 j
+            m - {A: 0, B: -1, C: 0 ...}
+
                     reduce
                     i         j
+                    m - {A: 0, B: 0, C: 1 ...}
+
                        expand
                        i            j
+                       m - {A: 0, B: 0, C: 0 ...}
                              reduce
                              i      j
+                             m - {A: 0, B: 1, C: 0 ...}
+
                                expand
                                i    done
 
@@ -39,36 +53,35 @@ public class MinimumWindowSubstring {
             int j = 0;
             int mi = -1;
             int mj = -1;
+            int mLength = 0;
             int count = t.length();
 
             while (j < s.length()) {
                 // expand window by j
-                while (j < s.length() && count > 0) {
-                    final char c = s.charAt(j);
-                    final int o = m.getOrDefault(c, 0);
-                    if (o > 0) count--;
+                final char jc = s.charAt(j);
+                final int jo = m.getOrDefault(jc, 0);
+                if (jo > 0) count--;
 
-                    m.put(c, o - 1);
-                    j++;
-                }
-                j--;
+                m.put(jc, jo - 1);
 
                 // reduce window by i
                 while (i <= j && count == 0) {
-                    final char c = s.charAt(i);
-                    final int o = m.get(c);
+                    final char ic = s.charAt(i);
+                    final int io = m.get(ic);
 
-
-                    if (o == 0) {
-                        if (mi == -1 || j - i < mj - mi) {
+                    if (io == 0) {
+                        // update
+                        final int cLength = j - i + 1;
+                        if (mLength == 0 || cLength < mLength) {
                             mi = i;
                             mj = j;
+                            mLength = cLength;
                         }
 
                         count++;
                     }
 
-                    m.put(c, o + 1);
+                    m.put(ic, io + 1);
                     i++;
                 }
                 j++;
