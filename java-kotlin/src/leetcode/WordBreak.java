@@ -11,12 +11,55 @@ public class WordBreak {
                         List.of("leet", "code")
                 )
         );
+
+        System.out.println(
+                new WordBreak().wordBreak(
+                        "aaaaaaa",
+                        List.of("aa", "aaaa", "aaa")
+                )
+        );
     }
 
+    /*
+        a a a a a a a [aaaa, aaa, aa]
+
+        a a
+            a a
+                a a
+                a a a
+
+            a a a
+                  ...
+            a a a a
+                  ...
+     */
     public boolean wordBreak(String s, List<String> wordDict) {
+//        return bruteforce(s, wordDict);
+        return bruteforceWithSet(s, new HashSet<String>(wordDict));
 //        return dfs(s, wordDict, new HashMap<String, Boolean>());
 //        return dp(s, wordDict);
-        return dpWithSet(s, wordDict);
+//        return dpWithSet(s, wordDict);
+    }
+
+
+    public boolean bruteforce(String s, List<String> wordDict) {
+        if (s.length() == 0) return true;
+
+        for (int i = 0; i < s.length(); i++)
+            if (wordDict.contains(s.substring(0, i + 1)))
+                if (bruteforce(s.substring(i + 1), wordDict)) return true;
+
+        return false;
+    }
+
+    public boolean bruteforceWithSet(String s, Set<String> wordDict) {
+        if (s.length() == 0) return true;
+
+        for (int i = 0; i < s.length(); i++)
+            if (wordDict.contains(s.substring(0, i + 1)))
+                if (bruteforceWithSet(s.substring(i + 1), wordDict)) return true;
+
+        return false;
     }
 
     /*
