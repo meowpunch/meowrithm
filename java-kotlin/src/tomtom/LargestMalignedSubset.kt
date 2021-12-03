@@ -2,6 +2,8 @@ package tomtom
 
 
 /*
+    (-3, -2, 1, 0, 8, 7, 1, 6), 3
+
     Task score: 62%
 
     1. mod
@@ -10,10 +12,9 @@ package tomtom
  */
 fun solution(A: IntArray, M: Int): Int {
     return A.map { a -> if (a >= 0) a % M else (a % M) + M }
-        .groupingBy { it }
-        .eachCount()
-        .values
-        .max() ?: 0
+        .groupingBy { it }.eachCount()
+//        .maxOfOrNull { it.value } ?: 0
+        .values.max() ?: 0
 }
 
 fun main() {

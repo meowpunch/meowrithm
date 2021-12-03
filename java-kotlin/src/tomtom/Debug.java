@@ -2,6 +2,18 @@ package tomtom;
 
 public class Debug {
 
+    public static void main(String[] args) {
+        /*
+            1
+            11 - 1
+            1001001 - 3
+
+         */
+        System.out.println(new Debug().solution(1));
+        System.out.println(new Debug().solution(3));
+        System.out.println(new Debug().solution(64 + 8 + 1));
+    }
+
     int solution(int n) {
         int[] d = new int[30];
         int l = 0;
