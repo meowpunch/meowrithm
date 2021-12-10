@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class HashFunction {
 
-    static final int hash(Object key) {
+    static int hash(Object key) {
         final int h = key.hashCode();
         System.out.printf("hashCode: %s (%s)\n", h, Integer.toBinaryString(h));
         // shift
