@@ -5,19 +5,8 @@ import java.util.*;
 public class WordBreak {
 
     public static void main(String[] args) {
-        System.out.println(
-                new WordBreak().wordBreak(
-                        "leetcode",
-                        List.of("leet", "code")
-                )
-        );
-
-        System.out.println(
-                new WordBreak().wordBreak(
-                        "aaaaaaa",
-                        List.of("aa", "aaaa", "aaa")
-                )
-        );
+        System.out.println(new WordBreak().wordBreak("leetcode", List.of("leet", "code")));
+        System.out.println(new WordBreak().wordBreak("aaaaaaa", List.of("aa", "aaaa", "aaa")));
     }
 
     /*
@@ -35,13 +24,13 @@ public class WordBreak {
      */
     public boolean wordBreak(String s, List<String> wordDict) {
 //        return bruteforce(s, wordDict);
-        return bruteforceWithSet(s, new HashSet<String>(wordDict));
+        return bruteforceWithSet(s, new HashSet<>(wordDict));
 //        return dfs(s, wordDict, new HashMap<String, Boolean>());
 //        return dp(s, wordDict);
 //        return dpWithSet(s, wordDict);
     }
 
-
+    // TLE
     public boolean bruteforce(String s, List<String> wordDict) {
         if (s.length() == 0) return true;
 
@@ -52,6 +41,8 @@ public class WordBreak {
         return false;
     }
 
+
+    // TLE
     public boolean bruteforceWithSet(String s, Set<String> wordDict) {
         if (s.length() == 0) return true;
 
@@ -128,31 +119,4 @@ public class WordBreak {
         throw new UnsupportedOperationException();
     }
 
-    /*
-        DFS
-        HashMap<String, Boolean>
-        postfix -> true/false
-    */
-    public boolean dfs(String s, List<String> wordDict, Map<String, Boolean> mem) {
-        if (s.length() == 0) return true;
-        else {
-            for (String prefix : wordDict) {
-                if (s.startsWith(prefix)) {
-                    String postfix = s.substring(prefix.length());
-                    if (mem.get(postfix)) return true;
-                    else {
-                        boolean p = dfs(
-                                s.substring(prefix.length()),
-                                wordDict,
-                                mem
-                        );
-                        mem.put(postfix, p);
-                        if (p) return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-    }
 }
