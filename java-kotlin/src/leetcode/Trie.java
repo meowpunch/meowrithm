@@ -25,12 +25,15 @@ public class Trie {
      */
 
     private class Node {
+        // represent if the character of the node is last char of the word or not.
         boolean f;
+
+        // 26 characters
         Node[] children;
 
         Node() {
             this.f = false;
-            this.children = null;
+            this.children = new Node[26];
         }
     }
 
@@ -45,8 +48,6 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             final int ic = charToIndex(word.charAt(i));
 
-            if (curr.children == null) curr.children = new Node[26];
-
             if (curr.children[ic] == null)  curr.children[ic] = new Node();
 
             if (i == word.length() - 1) curr.children[ic].f = true;
@@ -60,7 +61,7 @@ public class Trie {
         for (int i = 0; i < word.length(); i++) {
             final int ic = charToIndex(word.charAt(i));
 
-            if (curr.children != null && curr.children[ic] != null) {
+            if (curr.children[ic] != null) {
                 if (i == word.length() - 1 && curr.children[ic].f) return true;
                 curr = curr.children[ic];
             }
@@ -75,7 +76,7 @@ public class Trie {
         for (int i = 0; i < prefix.length(); i++) {
             final int ic = charToIndex(prefix.charAt(i));
 
-            if (curr.children != null && curr.children[ic] != null) {
+            if (curr.children[ic] != null) {
                 curr = curr.children[ic];
             }
             else return false;
