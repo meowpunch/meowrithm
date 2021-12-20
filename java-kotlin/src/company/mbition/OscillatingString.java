@@ -8,17 +8,24 @@ import java.util.stream.Stream;
 
 public class OscillatingString {
     public static void main(String[] args) {
+//        System.out.println(
+//                changedSort("ababzy")
+//        );
+//        System.out.println(
+//                changedSort("babcbb")
+//        );
+//        System.out.println(
+//                changedSort("zafb")
+//        );
+//        System.out.println(
+//                changedSort("azzzaa") // azazaz
+//        );
+
         System.out.println(
-                changedSort("ababzy")
+                advancedSort("azzzazaa") // azazaz
         );
         System.out.println(
-                changedSort("babcbb")
-        );
-        System.out.println(
-                changedSort("zafb")
-        );
-        System.out.println(
-                changedSort("azzzaa") // azazaz
+                advancedSort("aaabbbbccc") // abcbabcbacb
         );
     }
 
@@ -49,7 +56,7 @@ public class OscillatingString {
                 .forEach(oneStk::push);
 
         char prev = 'a' - 1;
-        while(!oneStk.empty()) {
+        while (!oneStk.empty()) {
 
             // step 2
             while (!oneStk.empty()) {
@@ -84,6 +91,55 @@ public class OscillatingString {
 
 
     public static String advancedSort(String s) {
-        return null;
+
+        final int[] occurence = new int[26];
+        final StringBuilder sb = new StringBuilder();
+
+        for (char c : s.toCharArray()) occurence[c - 'a'] += 1;
+
+        int count = 0;
+        for (int o : occurence) if (o > 0) count++;
+
+        int prev = -1;
+        while (count > 0) {
+            // step 2
+            for (int c = 0; c < occurence.length; c++) {
+                if (occurence[c] > 0 && c > prev) {
+                    sb.append((char) (c + 'a'));
+                    occurence[c]--;
+                    if (occurence[c] == 0) count--;
+
+                    prev = c;
+                }
+            }
+
+            // step 6
+            if (count > 1) {
+                // step 4
+                for (int c = occurence.length - 1; c >= 0; c--)
+                    if (occurence[c] > 0 && c < prev) {
+                        sb.append((char) (c + 'a'));
+                        occurence[c]--;
+                        if (occurence[c] == 0) count--;
+
+                        prev = c;
+                    }
+            }
+
+            // step 6
+            if (count == 1) {
+                for (int c = occurence.length - 1; c >= 0; c--) {
+                    if (occurence[c] > 0)
+                        while (occurence[c] > 0) {
+                            sb.append((char) (c + 'a'));
+                            occurence[c]--;
+                        }
+
+                    count = 0;
+                }
+            }
+        }
+
+        return sb.toString();
     }
 }
