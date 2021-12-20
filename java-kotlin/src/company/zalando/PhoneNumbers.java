@@ -1,4 +1,4 @@
-package zalando;
+package company.zalando;
 
 import java.util.stream.IntStream;
 

@@ -1,4 +1,4 @@
-package zalando;
+package company.zalando;
 
 // you can also use imports, for example:
 import java.util.*;

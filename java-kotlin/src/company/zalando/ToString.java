@@ -1,4 +1,4 @@
-package zalando;
+package company.zalando;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package sap;
+package company.sap;
 
 import java.util.HashMap;
 import java.util.Map;

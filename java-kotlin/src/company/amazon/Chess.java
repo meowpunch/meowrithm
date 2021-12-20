@@ -1,4 +1,4 @@
-package amazon;
+package company.amazon;
 
 public class Chess {
 

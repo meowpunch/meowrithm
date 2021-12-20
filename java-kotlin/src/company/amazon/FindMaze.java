@@ -1,4 +1,4 @@
-package amazon;
+package company.amazon;
 
 import java.util.*;
 import java.util.function.BiPredicate;

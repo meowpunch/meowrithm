@@ -1,12 +1,9 @@
-package amazon;
+package company.amazon;
 
 /* How would you implement the Linux find command as an API? For the API there are a lot of different use cases.
 For this exercise we can focus on finding files by name and finding files by file size.
 However, keep extensibility in mind.
 */
-
-import java.util.List;
-import java.util.Stack;
 
 //public class FindDirectory {
 //    /*

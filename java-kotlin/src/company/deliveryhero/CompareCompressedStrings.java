@@ -1,4 +1,4 @@
-package deliveryhero;
+package company.deliveryhero;
 
 
 import java.util.Arrays;

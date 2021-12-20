@@ -1,4 +1,4 @@
-package sap
+package company.sap
 
 
 data class Node<T>(val data: T, val children: List<Node<T>>)
