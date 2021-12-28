@@ -69,6 +69,7 @@ public class GroupingAnagram {
 
     public List<List<String>> oneLine(List<String> inputs) {
         return List.copyOf((inputs.stream().collect(Collectors.groupingBy(
+//                        this::sortString)
                 v -> v.chars().mapToObj(i -> (char) i).collect(Collectors.groupingBy(c -> c)))
         ).values()));
     }
