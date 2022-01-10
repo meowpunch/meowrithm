@@ -1,7 +1,7 @@
 This repository for the following:
  - practice data structures and algorithm
  - with multiple languages: java, scala, kotlin, python, c++, javascript
- - and programming styles: functional, declarative, imperative, object-oriented
+ - and [programming paradigms](https://en.wikipedia.org/wiki/Programming_paradigm): functional, declarative, imperative, object-oriented
 
 ## functional programming
 This part will be moved to scala directory
