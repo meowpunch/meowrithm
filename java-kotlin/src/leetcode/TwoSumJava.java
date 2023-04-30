@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class TwoSumJava {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new TwoSumJava().twoSum(
+        System.out.println(Arrays.toString(new TwoSumJava().memoization2023(
                 new int[]{11, 2, 15, 7},
                 9
         )));
@@ -23,7 +23,7 @@ public class TwoSumJava {
     }
 
     /*
-      O(1)/O(n)
+      O(n)/O(n)
 
       e.g. [15, 7, 11, 2], 9
 
@@ -39,8 +39,6 @@ public class TwoSumJava {
       i <- 3
 
       3, 1
-
-
    */
     private int[] memoization(int[] nums, int target) {
         HashMap<Integer, Integer> m = new HashMap<>();
@@ -50,6 +48,19 @@ public class TwoSumJava {
 
             if (j != -1) return new int[]{i, j};
             else m.put(nums[i], i);
+        }
+
+        throw new IllegalArgumentException();
+    }
+
+    private int[] memoization2023(int[] nums, int target) {
+        final var mem = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < nums.length; i ++) {
+            final var n = nums[i];
+
+            if (mem.containsKey(target - n)) return new int[] {mem.get(target - n), i};
+            else mem.put(nums[i], i);
         }
 
         throw new IllegalArgumentException();
