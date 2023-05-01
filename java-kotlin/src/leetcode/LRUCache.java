@@ -6,10 +6,6 @@ import java.util.Set;
 
 public class LRUCache {
 
-    /*
-
-
-     */
     public static void main(String[] args) {
         LRUCache c = new LRUCache(2);
         System.out.println(c.get(1));
