@@ -10,8 +10,44 @@ public class SlidingWindowMaximum {
         );
 
         System.out.println(
-                Arrays.toString(new SlidingWindowMaximum().bruteforce(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3))
+                Arrays.toString(new SlidingWindowMaximum().maxSlidingWindow2023(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3))
         );
+    }
+
+    /*
+        nums = [1,3,-1,-3,5,3,6,7], k = 3
+
+        numsLength <- 8
+        resLength <- 8 - 3 + 1 = 6
+
+        ri <- 5
+
+        window should be [-3, 5, 3]
+
+     */
+    public int[] maxSlidingWindow2023(int[] nums, int k) {
+        final var numsLength = nums.length;
+        final var result = new int[numsLength - k + 1];
+
+        // candidates maximum value sorted by index ascending
+        Deque<Integer> dq = new LinkedList<>();
+
+        for (var ri = 0; ri < nums.length; ri++) {
+            System.out.println(dq);
+            // removeFirst index out of range
+            while (!dq.isEmpty() && dq.peekFirst() < ri - k + 1) dq.removeFirst();
+
+            // removeLast if they're not candidates anymore
+            while (!dq.isEmpty() && nums[dq.peekLast()] <= nums[ri]) dq.removeLast();
+
+            // addLast index of possible candidate for maximum
+            dq.offerLast(ri);
+
+            // peekFirst and add maximum value to result from dq
+            if (ri >= k - 1) result[ri - k + 1] = nums[dq.peekFirst()];
+        }
+
+        return result;
     }
     /*
             input  : [1, 2, 3, 4],  k = 3
