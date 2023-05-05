@@ -12,7 +12,7 @@ public class ReachablePoint {
 
     (1, 5) -> (6, 5) -> (6, 11) is reachable
 
-    BFS
+    DFS
 
     2^N <- 2 * 2 * 2 * 2 exponential
    */
