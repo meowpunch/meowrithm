@@ -19,6 +19,6 @@ class LongestIncreasingSubsequenceKotlin {
             f[i] = m + 1
         }
 
-        return f.max() ?: -1
+        return f.maxOrNull() ?: -1
     }
 }
