@@ -20,7 +20,6 @@ public class BatchingOrders {
      countByItem {1=1, 2=2, 3=1, 4=1}
 
      returns [[1,2],[2,3]] OR [[1,2], [2], [3, 4]]
-
      Map<Integer(Item), Integer(count)>
   */
   public static List<List<Integer>> maximalSet(List<Integer> items, List<List<Integer>> orders) {
