@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/*
+    There are two more tasks other than `removeDuplicateLinks`
+ */
 public class PageManipulation {
   private record PageData(String url, String title, List<String> links) {}
 
@@ -16,7 +19,7 @@ public class PageManipulation {
 
     V time O(N) / space O(N)
     HashSet<String>
-      if set contains the link, it's already appeared.
+    if set contains the link, it's already appeared.
 
     time O(NlogN)/ space O(1)
     sorting
