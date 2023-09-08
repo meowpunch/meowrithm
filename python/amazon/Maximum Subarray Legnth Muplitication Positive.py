@@ -6,6 +6,9 @@
 #
 # negative(n) maximum length of subarray
 # whose multiplication is equal -1, ending at n index
+#
+# It's really similar to
+# 1567. Maximum Length of Subarray With Positive Product of Leetcode
 def maxSubarrayLength(badges):
     answer, positive, negative = 0, 0, 0
 
