@@ -14,9 +14,11 @@ import re
 #
 #   find index of prohibitedword (n)
 #
+#   It's similar to 2781. Length of the Longest Valid Substring of Leetcode
 def findReviewScore(review, prohibitedWords):
     review = review.lower()
     indices = []
+    prohibitedWords = set(prohibitedWords)
     for prohibitedWord in prohibitedWords:
         for i in re.finditer(prohibitedWord, review):
             indices.append((i.start(), i.end()))
@@ -46,3 +48,8 @@ if __name__ == '__main__':
     print(findReviewScore("abcdefghi", ["bc", "gh"]) == 5)
     print(findReviewScore("abcde", ["bc"]) == 3)
     print(findReviewScore("aabbbcccc", ["b"]) == 4)
+
+    # Fail
+    print(findReviewScore("acbc", ["acbc", "acb", "cbc"]) == 2)
+    print(findReviewScore("aaac", ["aaac","aac","aaa","aaac"]) == 2)
+
