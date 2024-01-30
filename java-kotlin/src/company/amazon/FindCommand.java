@@ -170,7 +170,7 @@ public class FindCommand {
 
     findCommandWithTenSizeAndChildName =
             new FindCommand(new SizeFilter(10).and(new NameFilter("child")));
-    findCommandWithTenSizeOrChildName.execute(baseFile).forEach(System.out::println);
+    findCommandWithTenSizeAndChildName.execute(baseFile).forEach(System.out::println);
 
 
     var findCommandWithTenSizeOrChildName =
