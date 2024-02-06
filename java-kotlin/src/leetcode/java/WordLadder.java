@@ -14,7 +14,68 @@ public class WordLadder {
         System.out.println(wl.ladderLength("hit", "cog", new ArrayList<>(List.of("hot", "dot", "dog", "lot", "log", "cog"))));
     }
 
-    private static class Node {String value; Integer depth; Node(String value, Integer depth) {this.value = value; this.depth = depth;}}
+    /*
+        wordList
+
+        hit: hot
+        hot: dot, lot
+        dot: dog, lot
+        dog: log, cog, dot
+        lot: hot, dot, log
+        log: cog, dog, lot
+        cog: ...
+
+        shortest path in graph having loop -> BFS search
+
+
+        wordList.length: N <= 5000
+        word length: M <= 10
+        N >> M
+
+
+        - check all node which is adjacent to curr word in wordList
+            - check all the node in wordList O(N * M)
+            - check all possible words O(26 * M) 26 means the number of lowercase letters
+
+        All words can be queued once O(N)
+
+        Time complexity: N * (26 * M)
+
+     */
+    public int ladderLength2024(String beginWord, String endWord, List<String> wordList) {
+        Queue<Node> que = new LinkedList<>();
+        HashSet<String> unvisitedWordSet = new HashSet<>(wordList);
+
+        if (!unvisitedWordSet.contains(endWord)) {
+            return 0;
+        }
+
+        que.offer(new Node(beginWord, 1));
+
+        while (!que.isEmpty()) {
+            Node curr = que.poll();
+
+            // check All possible words
+            for (int i = 0; i<curr.word.length(); i++) {
+                for (char c = 'a'; c<='z'; c++) {
+                    String candidate = curr.word.substring(0, i) + c + curr.word.substring(i + 1);
+
+                    if (unvisitedWordSet.contains(candidate)) {
+                        if (candidate.equals(endWord)) {
+                            return curr.level + 1;
+                        }
+
+                        que.offer(new Node(candidate, curr.level + 1));
+                        unvisitedWordSet.remove(candidate);
+                    }
+                }
+            }
+        }
+
+        return 0;
+    }
+
+    record Node(String word, int level) {}
 
     /*
        bidirectional
@@ -24,7 +85,7 @@ public class WordLadder {
     */
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         // preprocessing
-        HashSet wordSet = new HashSet<>(wordList);
+        HashSet<String> wordSet = new HashSet<>(wordList);
         wordSet.add(beginWord);
         final Map<String, List<String>> graph = buildGraph(wordSet);
 
@@ -34,11 +95,11 @@ public class WordLadder {
 
         while (!stk.isEmpty()) {
             final Node curr = stk.poll();
-            visited.add(curr.value);
+            visited.add(curr.word);
 
-            for (String cand : graph.getOrDefault(curr.value, Collections.emptyList())) {
-                if (cand.equals(endWord)) return curr.depth + 1;
-                else if (!visited.contains(cand)) stk.add(new Node(cand, curr.depth + 1));
+            for (String cand : graph.getOrDefault(curr.word, Collections.emptyList())) {
+                if (cand.equals(endWord)) return curr.level + 1;
+                else if (!visited.contains(cand)) stk.add(new Node(cand, curr.level + 1));
             }
 
         }
